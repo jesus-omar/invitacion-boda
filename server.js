@@ -6,6 +6,8 @@ const cookieParser = require('cookie-parser');
 
 const app = express();
 const PORT = 3000;
+const port = process.env.PORT || 3000;
+const host = '0.0.0.0';
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -150,6 +152,6 @@ app.post('/admin-login', (req, res) => {
 });
 
 // Iniciar servidor
-app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
+app.listen(port, host, () => {
+  console.log(`Servidor escuchando en http://${host}:${port}`);
 });
