@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Verificación de invitado</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9)), url('/img/fondo.jpg') no-repeat center center fixed;
+      background-size: cover;
+      background-attachment: fixed;
+
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .tarjeta {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 2rem;
+      border-radius: 10px;
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+    }
+
+    .tarjeta h2 {
+      margin-bottom: 10px;
+    }
+
+    .tarjeta p {
+      margin: 10px 0;
+    }
+
+    button {
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #ffb3c1;
+    }
+  </style>
+  <!-- SweetAlert2 CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+<body>
+  <div class="tarjeta">
+    <h2 id="nombres">Invitado</h2>
+    <p class="mensaje" style="line-height: 1.8;">¡Esperamos contar con su presencia en esta celebración junto a nosotros!</p>
+    <p><strong>N. DE INVITADOS:</strong></p>
+    <p id="accesos">0</p>
+    <button onclick="abrirInvitacion()">Abrir invitación</button>
+  </div>
+
+  <script>
+    function abrirInvitacion() {
+      window.location.href = "/invitacion";
+    }
+
+    // Leer datos guardados en localStorage
+    const guardado = localStorage.getItem("invitado");
+
+    if (guardado) {
+      const invitado = JSON.parse(guardado);
+      document.getElementById("nombres").textContent = invitado.nombre;
+      document.getElementById("accesos").textContent = invitado.accesos;
+    } else {
+      alert("No se encontró información. Regresando...");
+      window.location.href = "/";
+    }
+  </script>
+  <script>
+  const invitado = localStorage.getItem('invitado');
+  if (!invitado) {
+    alert("Debes ingresar tu código de invitación.");
+    window.location.href = "/";
+  }
+</script>
+
+</body>
+</html>

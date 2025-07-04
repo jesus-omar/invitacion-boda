@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Panel de Administración</title>
+  <link rel="stylesheet" href="/admin.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <!-- Barra lateral -->
+  <div class="sidebar">
+    <button onclick="mostrarSeccion('bienvenida')"><i data-lucide="home"></i> Inicio</button>
+    <button onclick="mostrarSeccion('buscar')"><i data-lucide="search"></i> Buscar invitado</button>
+    <button onclick="mostrarSeccion('invitados')"><i data-lucide="list"></i> Invitados</button>
+    <button onclick="cerrarSesion()"><i data-lucide="log-out"></i> Cerrar sesión</button>
+  </div>
+
+  <!-- Contenido principal -->
+  <div class="main-content">
+    <!-- Sección de bienvenida -->
+    <div id="seccion-bienvenida">
+      <h1>Bienvenido al Panel de Administración</h1>
+      <p>Desde aquí puedes gestionar a tus invitados</p>
+    </div>
+
+    <!-- Sección de búsqueda -->
+  <div id="seccion-buscar" style="display: none;">
+  <h2>Buscar invitado</h2>
+  <input type="text" id="codigoBuscar" placeholder="Código de invitación" />
+  <div class="botones-busqueda">
+    <button class="boton-buscar" onclick="buscarInvitado()">Buscar</button>
+    <button class="boton-buscar" onclick="limpiarBusqueda()">Limpiar</button>
+  </div>
+
+  <div id="resultado-busqueda"></div>
+</div>
+
+
+    <!-- Sección de invitados -->
+    <div id="seccion-invitados" style="display: none;">
+      <h2>Lista completa de invitados</h2>
+      <div id="lista-invitados"></div>
+    </div>
+  </div>
+
+  <script>
+    function mostrarSeccion(seccion) {
+      document.getElementById('seccion-bienvenida').style.display = seccion === 'bienvenida' ? 'block' : 'none';
+      document.getElementById('seccion-buscar').style.display = seccion === 'buscar' ? 'block' : 'none';
+      document.getElementById('seccion-invitados').style.display = seccion === 'invitados' ? 'block' : 'none';
+      
+      if (seccion === 'invitados') {
+        cargarInvitados();
+      }
+    }
+
+    function cerrarSesion() {
+      document.cookie = "admin=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      window.location.href = '/admin-login';
+    }
+
+    async function buscarInvitado() {
+      const codigo = document.getElementById('codigoBuscar').value.trim();
+      if (!codigo) return;
+
+      try {
+        const res = await fetch('/api/invitados');
+        const invitados = await res.json();
+        const invitado = invitados.find(i => i.codigo === codigo);
+
+        const contenedor = document.getElementById('resultado-busqueda');
+        if (invitado) {
+         contenedor.innerHTML = `
+  <div class="fila-invitado">
+    <div class="dato"><strong>Nombre:</strong><br>${invitado.nombre}</div>
+    <div class="dato"><strong>Código:</strong><br>${invitado.codigo}</div>
+    <div class="dato"><strong>Accesos:</strong><br>${invitado.accesos}</div>
+    <div class="dato"><strong>Confirmado:</strong><br>${
+      invitado.confirmado
+        ? '<i data-lucide="check-circle" style="color: green;"></i>'
+        : '<i data-lucide="x-circle" style="color: red;"></i>'
+    }</div>
+    <div class="dato"><strong>Mesa:</strong><br><span id="mesa-actual">${invitado.mesa}</span></div>
+    <div class="dato">
+      <input type="text" id="nuevaMesa" placeholder="Asignar mesa" />
+      <button onclick="actualizarMesa('${invitado.codigo}')">Actualizar mesa</button>
+    </div>
+  </div>
+`;
+
+lucide.createIcons();
+
+
+        } else {
+          contenedor.innerHTML = '<p style="color: red;">Invitado no encontrado.</p>';
+        }
+      } catch (error) {
+        console.error('Error buscando invitado:', error);
+      }
+    }
+
+    async function actualizarMesa(codigo) {
+      const nuevaMesa = document.getElementById('nuevaMesa').value.trim();
+      if (!nuevaMesa) return alert('Ingresa una mesa');
+
+      try {
+        const res = await fetch(`/api/invitados/${codigo}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ mesa: nuevaMesa })
+        });
+
+        if (res.ok) {
+          document.getElementById('mesa-actual').innerText = nuevaMesa;
+          mostrarToast('Mesa actualizada correctamente');
+        } else {
+          alert('Error actualizando la mesa');
+        }
+      } catch (err) {
+        console.error('Error actualizando:', err);
+      }
+    }
+
+    async function cargarInvitados() {
+      const contenedor = document.getElementById('lista-invitados');
+      contenedor.innerHTML = '<p>Cargando invitados...</p>';
+
+      try {
+        const res = await fetch('/api/invitados');
+        const invitados = await res.json();
+
+        if (invitados.length === 0) {
+          contenedor.innerHTML = '<p>No hay invitados registrados.</p>';
+          return;
+        }
+
+       let tabla = `
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Código</th>
+        <th class="centrado">Accesos</th>
+        <th class="centrado">Confirmado</th>
+        <th class="centrado">Mesa</th>
+      </tr>
+    </thead>
+    <tbody>
+`;
+
+for (const i of invitados) {
+  tabla += `
+    <tr>
+      <td>${i.nombre}</td>
+      <td>${i.codigo}</td>
+      <td class="centrado">${i.accesos}</td>
+      <td class="centrado">
+        ${i.confirmado
+          ? '<i data-lucide="check-circle" style="color: green;"></i>'
+          : '<i data-lucide="x-circle" style="color: red;"></i>'
+        }
+      </td>
+      <td class="centrado">${i.mesa}</td>
+    </tr>
+  `;
+}
+        tabla += `</tbody></table>`;
+        contenedor.innerHTML = tabla;
+        lucide.createIcons();
+      } catch (err) {
+        console.error('Error cargando lista:', err);
+        contenedor.innerHTML = '<p>Error al cargar los invitados.</p>';
+      }
+    }
+
+    lucide.createIcons();
+
+    function limpiarBusqueda() {
+  document.getElementById('codigoBuscar').value = '';
+  document.getElementById('resultado-busqueda').innerHTML = '';
+}
+
+function mostrarToast(mensaje) {
+  const toast = document.getElementById('toast');
+  toast.textContent = mensaje;
+  toast.classList.add('show');
+  setTimeout(() => {
+    toast.classList.remove('show');
+  }, 3000);
+}
+
+  </script>
+  <!-- Toast de confirmación -->
+<div id="toast" class="toast">Mesa actualizada correctamente</div>
+
+</body>
+</html>

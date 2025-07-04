@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Acceso administrador</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <style>
+    body {
+      background-color: #f6f0eb;
+      font-family: 'Georgia', serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .login-box {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      text-align: center;
+      width: 300px;
+      color: white;
+
+      /* Animación */
+      opacity: 0;
+      transform: translateY(30px);
+      animation: aparecer 1s ease-out forwards;
+    }
+
+    @keyframes aparecer {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      border: none;
+      text-align: center;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #bb9874;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 24px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #a87f5d;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h2>Acceso Admin</h2>
+    <form action="/admin-login" method="POST">
+      <input type="password" name="clave" placeholder="Contraseña" required />
+      <br />
+      <button type="submit">Ingresar</button>
+    </form>
+  </div>
+</body>
+</html>

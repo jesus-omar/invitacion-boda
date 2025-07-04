@@ -1,0 +1,61 @@
+<!-- views/index.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Invitación - Ingreso</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <!-- SweetAlert2 CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+<body>
+  <script>
+  localStorage.clear();
+</script>
+  <div class="contenedor">
+
+    <div class="contenido">
+      <h2>Ingresa tu código de invitación</h2>
+     <form id="form-codigo">
+  <input type="text" id="codigo" placeholder="Ej. 123ABC" required style="text-align: center;" />
+  <button type="submit">Ver invitación</button>
+</form>
+    </div>
+  </div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('form-codigo').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const codigo = document.getElementById('codigo').value.trim();
+
+      const response = await fetch('/verificar', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ codigo })
+      });
+
+      const result = await response.json();
+
+      if (result.ok) {
+        localStorage.setItem('invitado', JSON.stringify(result.invitado));
+        document.cookie = `codigo_invitado=${codigo}; path=/`;
+        window.location.href = '/verificacion';
+      } else {
+        Swal.fire({
+          title: 'Código no válido',
+          text: 'Verifica tu código de invitación',
+          icon: 'error',
+          confirmButtonText: 'Aceptar'
+        });
+      }
+    });
+  });
+</script>
+
+
+</body>
+</html>

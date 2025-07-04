@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Invitación de Boda</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    section {
+  padding: 60px 20px;
+  text-align: center; /* Asegura el centrado horizontal */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra horizontalmente los elementos hijos */
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+
+body {
+  font-family: 'Playfair Display', serif;
+  background-color: #fff;
+  color: #333;
+  scroll-behavior: smooth;
+  line-height: 1.6;          /* Interlineado */
+  letter-spacing: 0.5px;     /* Espaciado entre letras */
+  font-style: normal;        /* Texto sin cursiva */
+}
+
+h1, h2, h3, p, span, button {
+  font-family: 'Playfair Display', serif;
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+  font-style: normal;
+}
+
+   section.hidden {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+    .arrow {
+      font-size: 2em;
+      margin: 20px auto;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+    }
+
+    .frase {
+      background-color: #d2b49c;
+      color: white;
+      padding: 20px;
+      font-style: italic;
+    }
+
+ .contador {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.contador .bloque {
+  text-align: center;
+  font-size: 0.9em; /* Tamaño más pequeño */
+  color: #333;
+  font-weight: normal;
+}
+
+.contador .bloque span {
+  display: block;
+  font-size: 1.2em; /* Tamaño del número */
+  font-weight: normal; /* Sin negritas */
+  color: #000;
+}
+
+.boton {
+      background-color: #d2b49c;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+
+    .boton:hover {
+      background-color: #b89a83;
+    }
+
+    .icono-img {
+      height: 50px;
+      margin-bottom: 10px;
+    }
+
+    .icono {
+  width: 60px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+    .imagenes {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      overflow-x: auto;
+      padding: 20px 0;
+    }
+
+    .imagenes img {
+      height: 200px;
+      border-radius: 10px;
+    }
+    .carrusel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 10px;
+  padding: 20px 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.carrusel img {
+  height: 220px;
+  border-radius: 10px;
+  scroll-snap-align: center;
+  flex: 0 0 auto;
+  transition: transform 0.3s ease;
+}
+
+.carrusel img:hover {
+  transform: scale(1.05);
+}
+
+.carrusel-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  width: 100%;
+  padding: 20px 0;
+}
+
+.carrusel {
+  display: flex;
+  gap: 10px;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  transition: transform 0.3s ease;
+}
+
+.carrusel img {
+  height: 220px;
+  border-radius: 10px;
+  flex: 0 0 auto;
+  scroll-snap-align: center;
+}
+
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(210, 180, 156, 0.8);
+  border: none;
+  font-size: 2rem;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1;
+  border-radius: 50%;
+}
+
+.prev:hover,
+.next:hover {
+  background-color: rgba(180, 150, 130, 0.9);
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+.galeria-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.galeria-overlay.hidden {
+  display: none;
+}
+
+.galeria-overlay img {
+  max-height: 80%;
+  max-width: 90%;
+  border-radius: 10px;
+  object-fit: contain;
+}
+
+.cerrar {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.nav-galeria {
+  background: rgba(255,255,255,0.3);
+  color: white;
+  font-size: 2rem;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.nav-galeria.prev {
+  left: 20px;
+}
+
+.nav-galeria.next {
+  right: 20px;
+}
+.imagenes {
+  display: flex;
+  gap: 20px;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  animation: scroll-horizontal 60s linear infinite;
+  padding: 20px;
+  scroll-snap-type: x mandatory;
+}
+
+.imagenes img {
+  flex-shrink: 0;
+  height: 200px;
+  border-radius: 10px;
+  scroll-snap-align: start;
+}
+
+/* Scroll horizontal lento */
+@keyframes scroll-horizontal {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.estilo-bloque {
+  background-color: #fdf4f1;
+  padding: 40px 20px;
+}
+
+.icono-svg img {
+  width: 60px;
+  margin-bottom: 15px;
+}
+
+.frase-destacada {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.subrayado {
+  font-weight: bold;
+  font-size: 1.4em;
+  text-transform: uppercase;
+}
+.collage-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  padding: 0 10px;
+}
+
+.collage-grid img {
+  width: 100%;
+  height: 200px; /* o el alto que prefieras */
+  border-radius: 8px;
+  display: block;
+  object-fit: cover; /* recorta de los bordes si es necesario */
+}
+
+.nombres {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3.5em;
+  font-weight: 400;
+  color: #000; /* Negro */
+  margin-bottom: 15px;
+  margin-top: 60px; /* Más espacio hacia abajo */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s ease;
+}
+
+.portada.visible .nombres {
+  opacity: 1;
+  transform: translateY(0);
+}
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+.agradecimiento {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.agradecimiento-imagen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.agradecimiento-imagen img {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  display: block;
+}
+
+.agradecimiento-texto {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  background-color: #d2b49c;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 1.0em;
+  line-height: 1.4;
+  font-weight: 300;
+
+  /* Animación */
+  opacity: 0;
+  animation: fadeUp 1.2s ease forwards;
+  animation-delay: 0.3s;
+  animation-play-state: paused;
+}
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+ </style>
+ <!-- SweetAlert2 CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+<body>
+
+  <section class="hidden portada">
+  <h1 class="nombres fade">Alejandra y Omar</h1>
+  <h2>NUESTRA BODA</h2>
+  <div class="arrow">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down bounce">
+    <polyline points="6 9 12 15 18 9"></polyline>
+  </svg>
+</div>
+</section>
+  <section class="frase hidden">
+    <p>A veces lo que empieza como una locura,<br> se convierte en lo mejor de tu vida</p>
+  </section>
+
+  <section class="hidden">
+    <p>TE ESPERAMOS EL DÍA</p>
+    <h2>29 de Noviembre</h2>
+  <div class="contador" id="cuentaRegresiva">
+  <div class="bloque"><span id="dias">0</span>Días</div>
+  <div class="bloque"><span id="horas">0</span>Hs</div>
+  <div class="bloque"><span id="minutos">0</span>Min</div>
+  <div class="bloque"><span id="segundos">0</span>Seg</div>
+</div>
+
+
+    </div>
+  <a 
+  href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+Omar+y+Alejandra&dates=20251129T230000Z/20251130T060000Z&details=¡Te esperamos!+Misa+y+celebración+en+Los+Morillos&location=Parroquia+de+la+Medalla+Milagrosa,+Ciudad+de+México"
+  target="_blank"
+>
+  <button class="boton">AGENDAR FECHA</button>
+</a>
+  </section>
+
+  <section class="hidden" style="background-color: #f6f0eb;">
+    <img src="/img/icono_iglesia.svg" alt="Iglesia" class="icono">
+    <h3>CEREMONIA</h3>
+    <p>17:00hs, en la Parroquia de la Inmaculada Concepción de María.</p>
+      <a 
+    href="https://g.co/kgs/RgmiAjN" 
+    target="_blank" 
+    rel="noopener noreferrer"
+  >
+    <button class="boton">LLEGAR A LA CEREMONIA</button>
+  </a>
+  </section>
+
+  <section class="hidden">
+    <img src="/img/icono_copas.svg" alt="Copas de brindis" class="icono">
+    <h3>CELEBRACIÓN</h3>
+    <p>Después de la ceremonia festejaremos en el Jardín las Palmas.</p>
+      <a 
+    href="https://g.co/kgs/Vj5S4T5" 
+    target="_blank" 
+    rel="noopener noreferrer"
+  >
+    <button class="boton">LLEGAR A LA CELEBRACIÓN</button>
+  </a>
+  </section>
+
+<section class="hidden" style="background-color: #f6f0eb;">
+   <div class="icono-svg">
+  <img src="/img/historia.svg" alt="historia" />
+  </div>
+  <h3>NUESTRA HISTORIA</h3>
+
+  <div class="carrusel-container">
+    <button class="prev">&#10094;</button>
+
+    <div class="carrusel" id="carruselFotos">
+      <img src="/img/foto1.jpg" alt="foto1" />
+      <img src="/img/foto2.jpg" alt="foto2" />
+      <img src="/img/foto3.jpg" alt="foto3" />
+      <img src="/img/foto4.jpg" alt="foto4" />
+      <img src="/img/foto5.jpg" alt="foto3" />
+      <img src="/img/foto6.jpg" alt="foto4" />
+    </div>
+    <button class="next">&#10095;</button>
+  </div>
+  <button class="boton boton-fotos">Ver fotos</button>
+</section>
+<section class="hidden estilo-bloque" style="background-color: #fff;">
+  <div class="icono-svg">
+    <img src="/img/icono-vestimenta.svg" alt="Código de vestimenta" />
+  </div>
+  <p>Nuestra historia se viste de gala!</p>
+  <h3>Y TÚ TAMBIÉN!!</h3>
+</section>
+<section class="hidden estilo-bloque" style="background-color: #f6f0eb;">
+  <div class="icono-svg">
+    <img src="/img/party.svg" alt="party" />
+  </div>
+  <p>¡Nos encantan los niños! pero en esta ocasión queremos una noche de baile, brindis y risas solo para adultos.
+    
+  </p>
+  <h3>¡Gracias por entenderlo y venir con ganas de fiesta!</h3>
+</section>
+<div id="galeriaOverlay" class="galeria-overlay hidden">
+  <span class="cerrar" onclick="cerrarGaleria()">&times;</span>
+  <img id="imagenGaleria" src="" alt="Galería" />
+  <button class="nav-galeria prev" onclick="navegarGaleria(-1)">&#10094;</button>
+  <button class="nav-galeria next" onclick="navegarGaleria(1)">&#10095;</button>
+</div>
+
+<section class="hidden" style="background-color: #fff;">
+  <div class="icono-svg">
+    <img src="/img/regalo.svg" alt="regalo" />
+  </div>
+  <h3>REGALOS</h3>
+  <p>Tu presencia ya es nuestro regalo, pero si quieres ayudarnos a empezar con el pie derecho en esta nueva etapa, contaremos con 2 
+    opciones para tí:</p> <br>
+<div class="icono-svg">
+    <img src="/img/amazon.svg" alt="amazon" />
+  </div>
+  <p>Una mesa de regalos en Amazon ( Para los fans del shopping online).</p> 
+
+
+  <a href="https://www.amazon.com.mx/wedding/share/AlejandrayJesusOmar" target="_blank" class="boton" style="display: inline-block; margin-top: 1rem;">
+    Ir a la mesa de regalos
+  </a><br>
+
+  <p>Y una lluvia de sobres el dia del evento ( ¡Ideal para los que odian envolver regalos! )</p> <br>
+  <div class="icono-svg">
+    <img src="/img/sobre.svg" alt="sobre" />
+  </div>
+</section>
+
+<section class="hidden" style="background-color: #f6f0eb; padding: 60px 20px;">
+   <div class="icono-svg">
+  <img src="/img/momentos.svg" alt="momentos" />
+  </div>
+  <h3 style="margin-bottom: 20px;">MOMENTOS ESPECIALES</h3>
+  <div class="collage-grid">
+    <img src="/img/foto1.jpg" alt="foto" />
+    <img src="/img/foto2.jpg" alt="foto" />
+    <img src="/img/foto3.jpg" alt="foto" />
+    <img src="/img/foto4.jpg" alt="foto" />
+    <img src="/img/foto5.jpg" alt="foto" />
+    <img src="/img/foto6.jpg" alt="foto" />
+  </div>
+</section>
+<section class="hidden" style="background-color: #fff;">
+   <div class="icono-svg">
+  <img src="/img/acept.svg" alt="acept" />
+  </div>
+  <h3>¡Ahora te toca decir "SÍ ACEPTO" a nuestra invitación!</h3>
+  <form action="/confirmar" method="POST" style="margin-top: 20px;">
+  <input type="hidden" name="codigo" id="codigoConfirmar">
+  <button class="boton" onclick="confirmarAsistencia()">¡CONFIRMAR ASISTENCIA!</button>
+
+</form>
+</section>
+<section class="agradecimiento hidden" id="finalGracias">
+  <div class="agradecimiento-imagen">
+    <img src="/img/agradecimiento.jpg" alt="Gracias por ser parte" />
+    <div class="agradecimiento-texto">
+      <p>¡Gracias por ser parte de este capítulo<br>tan importante de nuestras vidas!</p>
+    </div>
+  </div>
+</section>
+
+
+<script>
+  // Scroll fade-in
+ const sections = document.querySelectorAll('section');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+
+      // Activa animación del texto de agradecimiento
+      if (entry.target.id === 'finalGracias') {
+        const texto = entry.target.querySelector('.agradecimiento-texto');
+        texto.style.opacity = '1';
+        texto.style.animationPlayState = 'running';
+      }
+    }
+  });
+}, {
+  threshold: 0.1
+});
+
+sections.forEach(sec => observer.observe(sec));
+
+
+  // Cuenta regresiva
+  const cuentaRegresiva = () => {
+    const final = new Date("2025-11-29T00:00:00").getTime();
+    const ahora = new Date().getTime();
+    const diferencia = final - ahora;
+
+    const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+    const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+    document.getElementById("dias").textContent = dias;
+    document.getElementById("horas").textContent = horas;
+    document.getElementById("minutos").textContent = minutos;
+    document.getElementById("segundos").textContent = segundos;
+  };
+
+  setInterval(cuentaRegresiva, 1000);
+  cuentaRegresiva();
+</script>
+
+<script>
+  const carruselFotos = document.getElementById('carruselFotos');
+  const prevBtn = document.querySelector('.prev');
+  const nextBtn = document.querySelector('.next');
+
+  let autoSlideInterval;
+
+  function autoSlide() {
+    autoSlideInterval = setInterval(() => {
+      carruselFotos.scrollBy({ left: 230, behavior: 'smooth' });
+    }, 3000);
+  }
+
+  function stopAutoSlide() {
+    clearInterval(autoSlideInterval);
+  }
+
+  prevBtn.addEventListener('click', () => {
+    carruselFotos.scrollBy({ left: -230, behavior: 'smooth' });
+    stopAutoSlide();
+  });
+
+  nextBtn.addEventListener('click', () => {
+    carruselFotos.scrollBy({ left: 230, behavior: 'smooth' });
+    stopAutoSlide();
+  });
+
+  autoSlide();
+</script>
+
+<script>
+  const imagenes = [
+    "/img/foto1.jpg",
+    "/img/foto2.jpg",
+    "/img/foto3.jpg",
+    "/img/foto4.jpg",
+    "/img/foto5.jpg",
+    "/img/foto6.jpg"
+  ];
+
+  let indiceActual = 0;
+
+  function abrirGaleria() {
+    document.getElementById('galeriaOverlay').classList.remove('hidden');
+    document.getElementById('imagenGaleria').src = imagenes[indiceActual];
+  }
+
+  function cerrarGaleria() {
+    document.getElementById('galeriaOverlay').classList.add('hidden');
+  }
+
+  function navegarGaleria(direccion) {
+    indiceActual += direccion;
+    if (indiceActual < 0) indiceActual = imagenes.length - 1;
+    if (indiceActual >= imagenes.length) indiceActual = 0;
+    document.getElementById('imagenGaleria').src = imagenes[indiceActual];
+  }
+
+  document.querySelector('.boton-fotos').addEventListener('click', abrirGaleria);
+</script>
+
+<script>
+  const carruselAuto = document.getElementById('carrusel');
+
+  let scrollAmount = 0;
+  const velocidad = 0.5;
+
+  function autoScroll() {
+    scrollAmount += velocidad;
+    if (scrollAmount >= carruselAuto.scrollWidth - carruselAuto.clientWidth) {
+      scrollAmount = 0;
+    }
+    carruselAuto.scrollLeft = scrollAmount;
+  }
+
+  let autoSlideCarrusel = setInterval(autoScroll, 30);
+
+  carruselAuto.addEventListener('mouseover', () => clearInterval(autoSlideCarrusel));
+  carruselAuto.addEventListener('mouseout', () => {
+    autoSlideCarrusel = setInterval(autoScroll, 20);
+  });
+</script>
+
+<script>
+  function mostrarClabe() {
+    const info = document.getElementById('clabeInfo');
+    info.style.display = info.style.display === 'none' ? 'block' : 'none';
+  }
+</script>
+<script>
+function confirmarAsistencia() {
+  const invitado = localStorage.getItem('invitado');
+  if (!invitado) {
+    alert("Invitado no válido.");
+    return;
+  }
+
+  const data = JSON.parse(invitado);
+
+fetch('/confirmar', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({ codigo: data.codigo })
+})
+
+    .then(response => response.text())
+    .then(html => {
+      document.open();
+      document.write(html);
+      document.close();
+    })
+    .catch(error => {
+      alert('Hubo un problema al confirmar. Intenta nuevamente.');
+    });
+}
+</script>
+
+
+<script>
+  const data = JSON.parse(localStorage.getItem('invitado'));
+  if (data && data.codigo) {
+    const inputCodigo = document.getElementById('codigoConfirmar');
+    if (inputCodigo) inputCodigo.value = data.codigo;
+  }
+</script>
+<script>
+  const invitado = localStorage.getItem('invitado');
+  if (!invitado) {
+    alert("Debes ingresar tu código de invitación.");
+    window.location.href = "/";
+  }
+</script>
+
+<footer style="text-align: right; margin-top: 0rem; padding: 1rem 2rem; font-size: 0.85rem;">
+  <a href="/admin-login" style="color: #c7a17a; text-decoration: none;">
+    Admin
+  </a>
+</footer>
+<audio id="musica-fondo" preload="auto">
+  <source src="/musica/miboda.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  const audio = document.getElementById('musica-fondo');
+
+  // Intenta reproducir automáticamente al cargar
+  window.addEventListener('DOMContentLoaded', () => {
+    // Precargar el audio en cuanto esté disponible
+    audio.load();
+
+    // Algunos navegadores permiten reproducción directa
+    audio.play().catch(() => {
+      // Si fue bloqueado, habilita con primer clic
+      document.body.addEventListener('click', () => {
+        audio.play();
+      }, { once: true });
+    });
+  });
+</script>
+
+</body>

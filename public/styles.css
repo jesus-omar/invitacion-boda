@@ -1,0 +1,103 @@
+/* public/styles.css */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+  overflow-x: hidden;
+}
+
+.contenedor {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+
+.contenido {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.55);
+  padding: 30px;
+  border-radius: 16px;
+  text-align: center;
+  max-width: 90%;
+  width: 320px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.4);
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin: 16px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #ff69b4;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 90%;
+}
+
+button:hover {
+  background-color: #ff85c1;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9)), url('/img/fondo.jpg') no-repeat center center fixed;
+  background-size: cover;
+  background-attachment: fixed;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Nueva pantalla: Invitación final */
+.container-invitacion {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+}
+
+.foto-novios {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+/* Estilos base para secciones */
+.info-slide {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.6s ease-out;
+  margin: 30px 0;
+  background: rgba(255,255,255,0.1);
+  padding: 15px;
+  border-radius: 8px;
+}
+
+/* Cuando la clase .visible se añade */
+.info-slide.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
