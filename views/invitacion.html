@@ -749,19 +749,26 @@ fetch('/confirmar', {
     Admin
   </a>
 </footer>
-<audio id="musica" src="/audio/tu-cancion.mp3" preload="auto"></audio>
+<audio id="musica-fondo" preload="auto">
+  <source src="/musica/miboda.mp3" type="audio/mpeg">
+</audio>
 
 <script>
-  const audio = document.getElementById('musica');
+  const audio = document.getElementById('musica-fondo');
 
-  function iniciarMusica() {
-    audio.play();
-    document.removeEventListener('click', iniciarMusica);
-    document.removeEventListener('touchstart', iniciarMusica);
-  }
+  // Intenta reproducir automáticamente al cargar
+  window.addEventListener('DOMContentLoaded', () => {
+    // Precargar el audio en cuanto esté disponible
+    audio.load();
 
-  document.addEventListener('click', iniciarMusica);
-  document.addEventListener('touchstart', iniciarMusica);
+    // Algunos navegadores permiten reproducción directa
+    audio.play().catch(() => {
+      // Si fue bloqueado, habilita con primer clic
+      document.body.addEventListener('click', () => {
+        audio.play();
+      }, { once: true });
+    });
+  });
 </script>
 
 </body>
