@@ -549,10 +549,9 @@ body, html {
   <img src="/img/acept.svg" alt="acept" />
   </div>
   <h3>¡Ahora te toca decir "SÍ ACEPTO" a nuestra invitación!</h3>
-  <form action="/confirmar" method="POST" style="margin-top: 20px;">
+  <form id="form-confirmar" style="margin-top: 20px;">
   <input type="hidden" name="codigo" id="codigoConfirmar">
-  <button class="boton" onclick="confirmarAsistencia()">¡CONFIRMAR ASISTENCIA!</button>
-
+  <button class="boton" type="submit">¡CONFIRMAR ASISTENCIA!</button>
 </form>
 </section>
 <section class="agradecimiento hidden" id="finalGracias">
@@ -699,37 +698,6 @@ sections.forEach(sec => observer.observe(sec));
   }
 </script>
 <script>
-function confirmarAsistencia() {
-  const invitado = localStorage.getItem('invitado');
-  if (!invitado) {
-    alert("Invitado no válido.");
-    return;
-  }
-
-  const data = JSON.parse(invitado);
-
-fetch('/confirmar', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({ codigo: data.codigo })
-})
-
-    .then(response => response.text())
-    .then(html => {
-      document.open();
-      document.write(html);
-      document.close();
-    })
-    .catch(error => {
-      alert('Hubo un problema al confirmar. Intenta nuevamente.');
-    });
-}
-</script>
-
-
-<script>
   const data = JSON.parse(localStorage.getItem('invitado'));
   if (data && data.codigo) {
     const inputCodigo = document.getElementById('codigoConfirmar');
@@ -766,5 +734,39 @@ fetch('/confirmar', {
     });
   });
 </script>
+<script>
+  document.getElementById('form-confirmar').addEventListener('submit', function(e) {
+    e.preventDefault(); // Evita que el formulario se envíe de forma tradicional
 
+    const invitado = localStorage.getItem('invitado');
+    if (!invitado) {
+      alert("Invitado no válido.");
+      return;
+    }
+
+    const data = JSON.parse(invitado);
+
+    fetch('/confirmar', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ codigo: data.codigo })
+    })
+    .then(response => response.text())
+    .then(html => {
+      document.open();
+      document.write(html);
+      document.close();
+    })
+    .catch(error => {
+      Swal.fire({
+        title: 'Error',
+        text: 'Hubo un problema al confirmar. Intenta nuevamente.',
+        icon: 'error',
+        confirmButtonText: 'Cerrar'
+      });
+    });
+  });
+</script>
 </body>
