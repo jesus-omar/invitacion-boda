@@ -397,23 +397,6 @@ body, html {
     transform: translateY(0);
   }
 }
-.boton-musica {
-  margin-top: 10px;
-  background-color: #d2b49c;
-  border: none;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  color: white;
-  font-size: 18px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.boton-musica:hover {
-  background-color: #b89a83;
-}
-
  </style>
  <!-- SweetAlert2 CDN -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -429,10 +412,6 @@ body, html {
     <polyline points="6 9 12 15 18 9"></polyline>
   </svg>
 </div>
-<button id="playMusica" class="boton-musica">
-  <i class="fas fa-play"></i>
-</button>
-
 </section>
   <section class="frase hidden">
     <p>A veces lo que empieza como una locura,<br> se convierte en lo mejor de tu vida</p>
@@ -740,23 +719,21 @@ sections.forEach(sec => observer.observe(sec));
 
 <script>
   const audio = document.getElementById('musica-fondo');
-  const playBtn = document.getElementById('playMusica');
 
-  // Precargar el audio
-  audio.load();
+  // Intenta reproducir automáticamente al cargar
+  window.addEventListener('DOMContentLoaded', () => {
+    // Precargar el audio en cuanto esté disponible
+    audio.load();
 
-  // Si no se puede reproducir automáticamente, mostrar botón
-  audio.play().catch(() => {
-    playBtn.style.display = 'block';
-
-    playBtn.addEventListener('click', () => {
-      audio.play().then(() => {
-        playBtn.style.display = 'none';
-      });
-    }, { once: true });
+    // Algunos navegadores permiten reproducción directa
+    audio.play().catch(() => {
+      // Si fue bloqueado, habilita con primer clic
+      document.body.addEventListener('click', () => {
+        audio.play();
+      }, { once: true });
+    });
   });
 </script>
-
 <script>
   document.getElementById('form-confirmar').addEventListener('submit', function(e) {
     e.preventDefault(); // Evita que el formulario se envíe de forma tradicional
@@ -792,4 +769,5 @@ sections.forEach(sec => observer.observe(sec));
     });
   });
 </script>
+
 </body>
