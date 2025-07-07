@@ -150,6 +150,10 @@ app.post('/admin-login', (req, res) => {
     res.send('<script>alert("Contraseña incorrecta"); window.location.href="/admin-login"</script>');
   }
 });
+// Ruta por defecto si no se encuentra ninguna otra
+app.use((req, res) => {
+  res.status(404).sendFile(path.join(__dirname, 'views', 'index.html'));
+});
 
 // Iniciar servidor
 app.listen(port, host, () => {

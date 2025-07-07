@@ -397,12 +397,68 @@ body, html {
     transform: translateY(0);
   }
 }
+
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #f6f0eb; /* beige */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  flex-direction: column;
+  font-family: 'Playfair Display', serif;
+
+  /* NUEVO: transición + opacidad */
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+
+  .loader-content p {
+    font-size: 1.2em;
+    color: #a47c62;
+    margin-top: 15px;
+  }
+
+  .anillo-loader {
+    width: 80px;
+    height: 80px;
+    border: 8px solid #ddd;
+    border-top: 8px solid #a47c62;
+    border-radius: 50%;
+    animation: girar 1.5s linear infinite;
+  }
+
+  @keyframes girar {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+#loader.ocultar {
+  opacity: 0;
+  visibility: hidden;
+}
+
+
  </style>
  <!-- SweetAlert2 CDN -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 <body>
+<!-- Loader personalizado -->
+<!-- Loader personalizado con CSS -->
+<div id="loader">
+  <div class="loader-content">
+    <div class="anillo-loader"></div>
+    <p>Cargando tu invitación...</p>
+  </div>
+</div>
+
 
   <section class="hidden portada">
   <h1 class="nombres fade">Alejandra y Omar</h1>
@@ -769,5 +825,17 @@ sections.forEach(sec => observer.observe(sec));
     });
   });
 </script>
+<script>
+  window.addEventListener('load', () => {
+    const loader = document.getElementById('loader');
+    loader.classList.add('ocultar');
+
+    // Quita el loader del DOM después de que desaparece
+    setTimeout(() => {
+      loader.remove();
+    }, 1000); // debe ser igual o mayor al tiempo de transición
+  });
+</script>
+
 
 </body>
