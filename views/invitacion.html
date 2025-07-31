@@ -50,7 +50,7 @@ body {
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background-color: rgba(0, 0, 0, 0.6); /* Negro semitransparente */
+  background-color: rgba(0, 0, 0, 0.8); /* Negro semitransparente */
   z-index: 0;
 }
 
@@ -80,7 +80,17 @@ h1, h2, h3, p, span, button {
   opacity: 0;
   transform: translateY(50px);
   transition: opacity 1s ease, transform 1s ease;
+  
 }
+
+.hidden p{
+  color:#de5607
+}
+.hidden h1{
+  color:#180daf
+}
+
+
 
 section.visible {
   opacity: 1;
@@ -101,7 +111,7 @@ section.visible {
 
     .frase {
       background-color: #d2b49c;
-      color: #c43316;
+      color: white;
       padding: 20px;
       font-style: italic;
     }
@@ -117,7 +127,7 @@ section.visible {
 .contador .bloque {
   text-align: center;
   font-size: 0.9em; /* Tamaño más pequeño */
-  color: #140279;
+  color: #333;
   font-weight: normal;
 }
 
@@ -125,7 +135,7 @@ section.visible {
   display: block;
   font-size: 1.2em; /* Tamaño del número */
   font-weight: normal; /* Sin negritas */
-  color: #c43316;
+  color: #000;
 }
 
 .boton {
