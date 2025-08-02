@@ -29,14 +29,14 @@
 
 body {
   font-family: 'Playfair Display', serif;
-  background-color: #0b1f33; /* Azul marino oscuro */
-  color: #fff;
+  background-color: #fff;
+  color: #333;
   scroll-behavior: smooth;
-  line-height: 1.6;
-  letter-spacing: 0.5px;
-  font-style: normal;
+  line-height: 1.6;          /* Interlineado */
+  letter-spacing: 0.5px;     /* Espaciado entre letras */
+  font-style: normal;        /* Texto sin cursiva */
+  
 }
-
 .portada {
   background-image: url('/img/fondo-boda.jpg');
   background-size: cover;
@@ -76,11 +76,6 @@ h1, h2, h3, p, span, button {
   font-style: normal;
 }
 
-h1, h2, h3, .subrayado {
-  color: #e2725b;
-}
-
-
    section.hidden {
   opacity: 0;
   transform: translateY(50px);
@@ -104,12 +99,13 @@ section.visible {
       50% { transform: translateY(10px); }
     }
 
-  .frase {
-  background-color: #e2725b; /* Terracota */
-  color: white;
-  padding: 20px;
-  font-style: italic;
-}
+    .frase {
+      background-color: #d2b49c;
+      color: white;
+      padding: 20px;
+      font-style: italic;
+    }
+
  .contador {
   display: flex;
   justify-content: center;
@@ -133,20 +129,19 @@ section.visible {
 }
 
 .boton {
-  background-color: #e2725b; /* Terracota */
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  font-weight: bold;
-  margin-top: 20px;
-  cursor: pointer;
-}
+      background-color: #d2b49c;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      margin-top: 20px;
+      cursor: pointer;
+    }
 
-.boton:hover {
-  background-color: #c65c45; /* Terracota más oscuro */
-}
-
+    .boton:hover {
+      background-color: #b89a83;
+    }
 
     .icono-img {
       height: 50px;
@@ -326,11 +321,9 @@ section.visible {
   }
 }
 .estilo-bloque {
-  background-color: rgba(255, 255, 255, 0.05); /* Suave sobre azul */
+  background-color: #fdf4f1;
   padding: 40px 20px;
-  border-radius: 12px;
 }
-
 
 .icono-svg img {
   width: 60px;
@@ -364,16 +357,15 @@ section.visible {
 
 .nombres {
   font-family: 'Great Vibes', cursive;
-  font-size: 4em;
+  font-size: 3.5em;
   font-weight: 400;
-  color: #e2725b; /* Terracota */
+  color: #000; /* Negro */
   margin-bottom: 15px;
-  margin-top: 60px;
+  margin-top: 60px; /* Más espacio hacia abajo */
   opacity: 0;
   transform: translateY(20px);
   transition: all 1s ease;
 }
-
 
 .portada.visible .nombres {
   opacity: 1;
@@ -413,7 +405,7 @@ body, html {
   bottom: 0;
   left: 0;
   width: 100vw;
-   background-color: #e2725b;
+  background-color: #d2b49c;
   color: white;
   text-align: center;
   padding: 20px;
