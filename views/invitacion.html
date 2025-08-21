@@ -439,6 +439,69 @@ body, html {
   font-weight: bold;
   cursor: pointer;
 }
+/* Botón */
+.btn-galeria {
+  background-color: #333;
+  color: #fff;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.btn-galeria:hover {
+  background-color: #555;
+}
+
+/* Modal */
+.modal-galeria {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  padding-top: 80px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(0,0,0,0.9);
+  text-align: center;
+}
+.modal-contenido {
+  max-width: 80%;
+  max-height: 80%;
+  margin: auto;
+  display: block;
+  border-radius: 10px;
+}
+.cerrar {
+  position: absolute;
+  top: 30px;
+  right: 50px;
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+}
+
+/* Flechas */
+.anterior, .siguiente {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 40px;
+  transition: 0.3s;
+  user-select: none;
+}
+.anterior { left: 30px; }
+.siguiente { right: 30px; }
+.anterior:hover, .siguiente:hover {
+  color: #ccc;
+}
+
 
 .agradecimiento-texto {
   position: absolute;
@@ -606,12 +669,12 @@ body, html {
     <img src="/img/sobre.svg" alt="sobre" />
   </div>
 </section>
-<section class="hidden" style="background-color: #fff; padding: 60px 20px; position: relative;">
+<section class="hidden" style="background-color: #fff; padding: 60px 20px;">
   <div class="icono-svg">
     <img src="/img/momentos.svg" alt="momentos" />
   </div>
   <h3 style="margin-bottom: 20px;">MOMENTOS ESPECIALES</h3>
-
+  
   <div class="collage-grid">
     <img src="/img/foto1.jpg" alt="foto" />
     <img src="/img/foto2.jpg" alt="foto" />
@@ -621,29 +684,18 @@ body, html {
     <img src="/img/foto6.jpg" alt="foto" />
   </div>
 
-  <!-- Botón ver más -->
-  <div style="text-align:center; margin-top:20px;">
-    <button id="verMasBtn" style="padding:10px 20px; background:#333; color:#fff; border:none; border-radius:5px; cursor:pointer;">
-      Ver más fotos
-    </button>
+  <!-- Botón para ver galería -->
+  <div style="text-align: center; margin-top: 20px;">
+    <button id="verMasBtn" class="btn-galeria">Ver más fotos</button>
   </div>
 </section>
 
-<!-- Modal Galería -->
-<div id="galeriaModal" class="modal">
+<!-- Galería Modal -->
+<div id="galeriaModal" class="modal-galeria">
   <span class="cerrar">&times;</span>
-  <div class="modal-contenido">
-    <img src="/img/foto1.jpg" alt="foto" />
-    <img src="/img/foto2.jpg" alt="foto" />
-    <img src="/img/foto3.jpg" alt="foto" />
-    <img src="/img/foto4.jpg" alt="foto" />
-    <img src="/img/foto5.jpg" alt="foto" />
-    <img src="/img/foto6.jpg" alt="foto" />
-    <!-- Agrega aquí las fotos extra que no están en el collage -->
-    <img src="/img/foto7.jpg" alt="foto" />
-    <img src="/img/foto8.jpg" alt="foto" />
-    <img src="/img/foto9.jpg" alt="foto" />
-  </div>
+  <img class="modal-contenido" id="imagenGrande" />
+  <a class="anterior">&#10094;</a>
+  <a class="siguiente">&#10095;</a>
 </div>
 
 <section class="hidden" style="background-color: #f6f0eb;">
@@ -890,5 +942,47 @@ sections.forEach(sec => observer.observe(sec));
     }
   });
 </script>
+<script>
+  // Lista de fotos extra
+  const fotos = [
+    "/img/foto7.jpg",
+    "/img/foto8.jpg",
+    "/img/foto9.jpg",
+    "/img/foto10.jpg"
+  ];
+
+  let indice = 0;
+  const modal = document.getElementById("galeriaModal");
+  const galeriaImagen = document.getElementById("galeriaImagen");
+  const closeBtn = document.querySelector(".close");
+  const prevBtn = document.querySelector(".prev");
+  const nextBtn = document.querySelector(".next");
+
+  // Abrir modal
+  document.getElementById("openGalleryBtn").addEventListener("click", () => {
+    modal.style.display = "block";
+    indice = 0;
+    galeriaImagen.src = fotos[indice];
+  });
+
+  // Cerrar modal
+  closeBtn.onclick = () => modal.style.display = "none";
+
+  // Flechas
+  nextBtn.onclick = () => {
+    indice = (indice + 1) % fotos.length;
+    galeriaImagen.src = fotos[indice];
+  };
+  prevBtn.onclick = () => {
+    indice = (indice - 1 + fotos.length) % fotos.length;
+    galeriaImagen.src = fotos[indice];
+  };
+
+  // Cerrar con clic fuera
+  window.onclick = (e) => {
+    if (e.target == modal) modal.style.display = "none";
+  };
+</script>
+
 
 </body>
