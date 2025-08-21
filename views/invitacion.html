@@ -400,6 +400,46 @@ body, html {
   display: block;
 }
 
+/* Modal fondo */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.9);
+  overflow-y: auto;
+  padding: 40px 20px;
+}
+
+/* Contenedor de imágenes */
+.modal-contenido {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+  justify-items: center;
+}
+
+.modal-contenido img {
+  max-width: 100%;
+  border-radius: 10px;
+  transition: transform 0.3s;
+}
+
+.modal-contenido img:hover {
+  transform: scale(1.05);
+}
+
+/* Botón cerrar */
+.cerrar {
+  position: absolute;
+  top: 20px; right: 40px;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 .agradecimiento-texto {
   position: absolute;
   bottom: 0;
@@ -429,6 +469,8 @@ body, html {
     transform: translateY(0);
   }
 }
+
+
  </style>
  <!-- SweetAlert2 CDN -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -564,12 +606,12 @@ body, html {
     <img src="/img/sobre.svg" alt="sobre" />
   </div>
 </section>
-
-<section class="hidden" style="background-color: #fff; padding: 60px 20px;">
-   <div class="icono-svg">
-  <img src="/img/momentos.svg" alt="momentos" />
+<section class="hidden" style="background-color: #fff; padding: 60px 20px; position: relative;">
+  <div class="icono-svg">
+    <img src="/img/momentos.svg" alt="momentos" />
   </div>
   <h3 style="margin-bottom: 20px;">MOMENTOS ESPECIALES</h3>
+
   <div class="collage-grid">
     <img src="/img/foto1.jpg" alt="foto" />
     <img src="/img/foto2.jpg" alt="foto" />
@@ -578,7 +620,32 @@ body, html {
     <img src="/img/foto5.jpg" alt="foto" />
     <img src="/img/foto6.jpg" alt="foto" />
   </div>
+
+  <!-- Botón ver más -->
+  <div style="text-align:center; margin-top:20px;">
+    <button id="verMasBtn" style="padding:10px 20px; background:#333; color:#fff; border:none; border-radius:5px; cursor:pointer;">
+      Ver más fotos
+    </button>
+  </div>
 </section>
+
+<!-- Modal Galería -->
+<div id="galeriaModal" class="modal">
+  <span class="cerrar">&times;</span>
+  <div class="modal-contenido">
+    <img src="/img/foto1.jpg" alt="foto" />
+    <img src="/img/foto2.jpg" alt="foto" />
+    <img src="/img/foto3.jpg" alt="foto" />
+    <img src="/img/foto4.jpg" alt="foto" />
+    <img src="/img/foto5.jpg" alt="foto" />
+    <img src="/img/foto6.jpg" alt="foto" />
+    <!-- Agrega aquí las fotos extra que no están en el collage -->
+    <img src="/img/foto7.jpg" alt="foto" />
+    <img src="/img/foto8.jpg" alt="foto" />
+    <img src="/img/foto9.jpg" alt="foto" />
+  </div>
+</div>
+
 <section class="hidden" style="background-color: #f6f0eb;">
    <div class="icono-svg">
   <img src="/img/acept.svg" alt="acept" />
@@ -802,6 +869,25 @@ sections.forEach(sec => observer.observe(sec));
         confirmButtonText: 'Cerrar'
       });
     });
+  });
+</script>
+<script>
+  const verMasBtn = document.getElementById("verMasBtn");
+  const modal = document.getElementById("galeriaModal");
+  const cerrar = document.querySelector(".cerrar");
+
+  verMasBtn.addEventListener("click", () => {
+    modal.style.display = "block";
+  });
+
+  cerrar.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
   });
 </script>
 
