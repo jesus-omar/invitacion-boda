@@ -8,960 +8,533 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
     section {
-  padding: 60px 20px;
-  text-align: center; /* Asegura el centrado horizontal */
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Centra horizontalmente los elementos hijos */
-  justify-content: center;
-  opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-
-body {
-  font-family: 'Playfair Display', serif;
-  background-color: #fff;
-  color: #333;
-  scroll-behavior: smooth;
-  line-height: 1.6;          /* Interlineado */
-  letter-spacing: 0.5px;     /* Espaciado entre letras */
-  font-style: normal;        /* Texto sin cursiva */
-  
-}
-.portada {
-  background-image: url('/img/fondo-boda.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  padding: 40px 20px;
-  border-radius: 12px;
-}
-
-.portada::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-color: rgba(0, 0, 0, 0.6); /* Negro semitransparente */
-  z-index: 0;
-}
-
-.portada > * {
-  position: relative;
-  z-index: 1;
-}
-.portada h1,
-.portada h2,
-.portada .arrow svg {
-  color: white;
-  fill: white;
-  stroke: white;
-  z-index: 1;
-}
-
-
-
-h1, h2, h3, p, span, button {
-  font-family: 'Playfair Display', serif;
-  line-height: 1.6;
-  letter-spacing: 0.5px;
-  font-style: normal;
-}
-
-   section.hidden {
-  opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 1s ease, transform 1s ease;
-}
-
-section.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-
-    .arrow {
-      font-size: 2em;
-      margin: 20px auto;
-      animation: bounce 2s infinite;
+      padding: 60px 20px;
+      text-align: center;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      opacity: 0; transform: translateY(50px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
     }
 
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(10px); }
+    body {
+      font-family: 'Playfair Display', serif;
+      background-color: #fff;
+      color: #333;
+      scroll-behavior: smooth;
+      line-height: 1.6;
+      letter-spacing: 0.5px;
+      font-style: normal;
     }
 
-    .frase {
-      background-color: #d2b49c;
-      color: white;
-      padding: 20px;
-      font-style: italic;
+    /* Portada con imagen y overlay oscuro SOLO en esa sección */
+    .portada {
+      position: relative;
+      background-image: url('/img/fondo-boda.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      padding: 40px 20px;
+      border-radius: 12px;
+      width: 100%;
+    }
+    .portada::before {
+      content: "";
+      position: absolute; inset: 0;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 0; border-radius: 12px;
+    }
+    .portada > * { position: relative; z-index: 1; }
+    .portada h1, .portada h2, .portada .arrow svg { color: #fff; fill: #fff; stroke: #fff; z-index: 1; }
+
+    h1, h2, h3, p, span, button {
+      font-family: 'Playfair Display', serif;
+      line-height: 1.6; letter-spacing: 0.5px; font-style: normal;
     }
 
- .contador {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 20px;
-  font-family: Arial, sans-serif;
-}
+    section.hidden { opacity: 0; transform: translateY(50px); transition: opacity 1s ease, transform 1s ease; }
+    section.visible { opacity: 1; transform: translateY(0); }
 
-.contador .bloque {
-  text-align: center;
-  font-size: 0.9em; /* Tamaño más pequeño */
-  color: #333;
-  font-weight: normal;
-}
+    .arrow { font-size: 2em; margin: 20px auto; animation: bounce 2s infinite; }
+    @keyframes bounce { 0%,100%{transform:translateY(0);} 50%{transform:translateY(10px);} }
 
-.contador .bloque span {
-  display: block;
-  font-size: 1.2em; /* Tamaño del número */
-  font-weight: normal; /* Sin negritas */
-  color: #000;
-}
+    .frase { background-color: #d2b49c; color: #fff; padding: 20px; font-style: italic; }
 
-.boton {
-      background-color: #d2b49c;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      font-weight: bold;
-      margin-top: 20px;
-      cursor: pointer;
+    .contador { display: flex; justify-content: center; gap: 20px; margin-top: 20px; font-family: Arial, sans-serif; }
+    .contador .bloque { text-align: center; font-size: 0.9em; color: #333; font-weight: normal; }
+    .contador .bloque span { display: block; font-size: 1.2em; font-weight: normal; color: #000; }
+
+    .boton { background-color: #d2b49c; color: #fff; padding: 10px 20px; border: none; border-radius: 5px; font-weight: bold; margin-top: 20px; cursor: pointer; }
+    .boton:hover { background-color: #b89a83; }
+
+    .icono-img { height: 50px; margin-bottom: 10px; }
+    .icono { width: 60px; height: auto; margin-bottom: 10px; }
+
+    .imagenes { display: flex; justify-content: center; gap: 10px; overflow-x: auto; padding: 20px 0; }
+    .imagenes img { height: 200px; border-radius: 10px; }
+
+    /* Carrusel (NO tocado el HTML; solo estilos) */
+    .carrusel { display: flex; overflow-x: hidden; scroll-snap-type: x mandatory; gap: 10px; padding: 20px 0; -webkit-overflow-scrolling: touch; transition: transform 0.3s ease; }
+    .carrusel img { height: 220px; border-radius: 10px; scroll-snap-align: center; flex: 0 0 auto; transition: transform 0.3s ease; }
+    .carrusel img:hover { transform: scale(1.05); }
+    .carrusel-container { position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; width: 100%; padding: 20px 0; }
+    .prev, .next {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background-color: rgba(210,180,156,0.8); border: none; font-size: 2rem; color: #fff;
+      padding: 10px; cursor: pointer; z-index: 1; border-radius: 50%;
     }
+    .prev:hover, .next:hover { background-color: rgba(180,150,130,0.9); }
+    .prev { left: 10px; } .next { right: 10px; }
 
-    .boton:hover {
-      background-color: #b89a83;
+    /* Overlay galería pequeña (NUESTRA HISTORIA) */
+    .galeria-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.9); display: flex; align-items: center; justify-content: center;
+      z-index: 999; flex-direction: column; padding: 20px; }
+    .galeria-overlay.hidden { display: none; }
+    .galeria-overlay img { max-height: 80%; max-width: 90%; border-radius: 10px; object-fit: contain; }
+
+    .cerrar { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 2rem; cursor: pointer; }
+
+    .nav-galeria { background: rgba(255,255,255,0.3); color: #fff; font-size: 2rem; border: none; padding: 10px 15px; cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%); }
+    .nav-galeria.prev { left: 20px; } .nav-galeria.next { right: 20px; }
+
+    .imagenes { display: flex; gap: 20px; overflow-x: scroll; scroll-behavior: smooth; animation: scroll-horizontal 60s linear infinite; padding: 20px; scroll-snap-type: x mandatory; }
+    .imagenes img { flex-shrink: 0; height: 200px; border-radius: 10px; scroll-snap-align: start; }
+    @keyframes scroll-horizontal { 0%{transform:translateX(0);} 100%{transform:translateX(-50%);} }
+
+    .estilo-bloque { background-color: #fdf4f1; padding: 40px 20px; }
+    .icono-svg img { width: 60px; margin-bottom: 15px; }
+    .frase-destacada { font-size: 1.2em; margin-bottom: 10px; }
+    .subrayado { font-weight: bold; font-size: 1.4em; text-transform: uppercase; }
+
+    .collage-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 0 10px; }
+    .collage-grid img { width: 100%; height: 200px; border-radius: 8px; display: block; object-fit: cover; }
+
+    .nombres { font-family: 'Great Vibes', cursive; font-size: 3.5em; font-weight: 400; color: #000; margin-bottom: 15px; margin-top: 60px; opacity: 0; transform: translateY(20px); transition: all 1s ease; }
+    .portada.visible .nombres { opacity: 1; transform: translateY(0); }
+
+    body, html { margin: 0; padding: 0; }
+
+    .agradecimiento { position: relative; width: 100vw; height: 100vh; overflow: hidden; margin: 0; padding: 0; }
+    .agradecimiento-imagen { position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; }
+    .agradecimiento-imagen img { width: 100vw; height: 100vh; object-fit: cover; display: block; }
+
+    /* Modal tipo grid (no se usa, lo dejo por si lo ocupabas) */
+    .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); overflow-y: auto; padding: 40px 20px; }
+    .modal-contenido { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; justify-items: center; }
+    .modal-contenido img { max-width: 100%; border-radius: 10px; transition: transform 0.3s; }
+    .modal-contenido img:hover { transform: scale(1.05); }
+
+    /* Botón reutilizable */
+    .btn-galeria { background-color: #333; color: #fff; padding: 12px 24px; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; transition: background 0.3s; }
+    .btn-galeria:hover { background-color: #555; }
+
+    /* Modal “Ver más fotos” (el nuevo) */
+    .modal-galeria { display: none; position: fixed; z-index: 1000; padding-top: 80px; left: 0; top: 0; width: 100%; height: 100%; overflow: hidden; background-color: rgba(0,0,0,0.9); text-align: center; }
+    .modal-galeria .modal-contenido { max-width: 80%; max-height: 80%; margin: auto; display: block; border-radius: 10px; }
+    .modal-galeria .cerrar { position: absolute; top: 30px; right: 50px; font-size: 40px; color: white; cursor: pointer; }
+    .anterior, .siguiente { cursor: pointer; position: absolute; top: 50%; padding: 16px; color: white; font-weight: bold; font-size: 40px; transition: 0.3s; user-select: none; }
+    .anterior { left: 30px; } .siguiente { right: 30px; }
+    .anterior:hover, .siguiente:hover { color: #ccc; }
+
+    .agradecimiento-texto {
+      position: absolute; bottom: 0; left: 0; width: 100vw;
+      background-color: #d2b49c; color: white; text-align: center;
+      padding: 20px; font-size: 1.0em; line-height: 1.4; font-weight: 300;
+      opacity: 0; animation: fadeUp 1.2s ease forwards; animation-delay: 0.3s; animation-play-state: paused;
     }
+    @keyframes fadeUp { from{opacity:0; transform:translateY(30px);} to{opacity:1; transform:translateY(0);} }
+  </style>
 
-    .icono-img {
-      height: 50px;
-      margin-bottom: 10px;
-    }
-
-    .icono {
-  width: 60px;
-  height: auto;
-  margin-bottom: 10px;
-}
-
-    .imagenes {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      overflow-x: auto;
-      padding: 20px 0;
-    }
-
-    .imagenes img {
-      height: 200px;
-      border-radius: 10px;
-    }
-    .carrusel {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  gap: 10px;
-  padding: 20px 0;
-  -webkit-overflow-scrolling: touch;
-}
-
-.carrusel img {
-  height: 220px;
-  border-radius: 10px;
-  scroll-snap-align: center;
-  flex: 0 0 auto;
-  transition: transform 0.3s ease;
-}
-
-.carrusel img:hover {
-  transform: scale(1.05);
-}
-
-.carrusel-container {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  width: 100%;
-  padding: 20px 0;
-}
-
-.carrusel {
-  display: flex;
-  gap: 10px;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-  transition: transform 0.3s ease;
-}
-
-.carrusel img {
-  height: 220px;
-  border-radius: 10px;
-  flex: 0 0 auto;
-  scroll-snap-align: center;
-}
-
-.prev,
-.next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(210, 180, 156, 0.8);
-  border: none;
-  font-size: 2rem;
-  color: white;
-  padding: 10px;
-  cursor: pointer;
-  z-index: 1;
-  border-radius: 50%;
-}
-
-.prev:hover,
-.next:hover {
-  background-color: rgba(180, 150, 130, 0.9);
-}
-
-.prev {
-  left: 10px;
-}
-
-.next {
-  right: 10px;
-}
-
-.galeria-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 999;
-  flex-direction: column;
-  padding: 20px;
-}
-
-.galeria-overlay.hidden {
-  display: none;
-}
-
-.galeria-overlay img {
-  max-height: 80%;
-  max-width: 90%;
-  border-radius: 10px;
-  object-fit: contain;
-}
-
-.cerrar {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  color: white;
-  font-size: 2rem;
-  cursor: pointer;
-}
-
-.nav-galeria {
-  background: rgba(255,255,255,0.3);
-  color: white;
-  font-size: 2rem;
-  border: none;
-  padding: 10px 15px;
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.nav-galeria.prev {
-  left: 20px;
-}
-
-.nav-galeria.next {
-  right: 20px;
-}
-.imagenes {
-  display: flex;
-  gap: 20px;
-  overflow-x: scroll;
-  scroll-behavior: smooth;
-  animation: scroll-horizontal 60s linear infinite;
-  padding: 20px;
-  scroll-snap-type: x mandatory;
-}
-
-.imagenes img {
-  flex-shrink: 0;
-  height: 200px;
-  border-radius: 10px;
-  scroll-snap-align: start;
-}
-
-/* Scroll horizontal lento */
-@keyframes scroll-horizontal {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-.estilo-bloque {
-  background-color: #fdf4f1;
-  padding: 40px 20px;
-}
-
-.icono-svg img {
-  width: 60px;
-  margin-bottom: 15px;
-}
-
-.frase-destacada {
-  font-size: 1.2em;
-  margin-bottom: 10px;
-}
-
-.subrayado {
-  font-weight: bold;
-  font-size: 1.4em;
-  text-transform: uppercase;
-}
-.collage-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  padding: 0 10px;
-}
-
-.collage-grid img {
-  width: 100%;
-  height: 200px; /* o el alto que prefieras */
-  border-radius: 8px;
-  display: block;
-  object-fit: cover; /* recorta de los bordes si es necesario */
-}
-
-.nombres {
-  font-family: 'Great Vibes', cursive;
-  font-size: 3.5em;
-  font-weight: 400;
-  color: #000; /* Negro */
-  margin-bottom: 15px;
-  margin-top: 60px; /* Más espacio hacia abajo */
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 1s ease;
-}
-
-.portada.visible .nombres {
-  opacity: 1;
-  transform: translateY(0);
-}
-body, html {
-  margin: 0;
-  padding: 0;
-}
-
-.agradecimiento {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
-}
-
-.agradecimiento-imagen {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-}
-
-.agradecimiento-imagen img {
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  display: block;
-}
-
-/* Modal fondo */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.9);
-  overflow-y: auto;
-  padding: 40px 20px;
-}
-
-/* Contenedor de imágenes */
-.modal-contenido {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 15px;
-  justify-items: center;
-}
-
-.modal-contenido img {
-  max-width: 100%;
-  border-radius: 10px;
-  transition: transform 0.3s;
-}
-
-.modal-contenido img:hover {
-  transform: scale(1.05);
-}
-
-/* Botón cerrar */
-.cerrar {
-  position: absolute;
-  top: 20px; right: 40px;
-  color: white;
-  font-size: 40px;
-  font-weight: bold;
-  cursor: pointer;
-}
-/* Botón */
-.btn-galeria {
-  background-color: #333;
-  color: #fff;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-.btn-galeria:hover {
-  background-color: #555;
-}
-
-/* Modal */
-.modal-galeria {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  padding-top: 80px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background-color: rgba(0,0,0,0.9);
-  text-align: center;
-}
-.modal-contenido {
-  max-width: 80%;
-  max-height: 80%;
-  margin: auto;
-  display: block;
-  border-radius: 10px;
-}
-.cerrar {
-  position: absolute;
-  top: 30px;
-  right: 50px;
-  font-size: 40px;
-  color: white;
-  cursor: pointer;
-}
-
-/* Flechas */
-.anterior, .siguiente {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  padding: 16px;
-  color: white;
-  font-weight: bold;
-  font-size: 40px;
-  transition: 0.3s;
-  user-select: none;
-}
-.anterior { left: 30px; }
-.siguiente { right: 30px; }
-.anterior:hover, .siguiente:hover {
-  color: #ccc;
-}
-
-
-.agradecimiento-texto {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100vw;
-  background-color: #d2b49c;
-  color: white;
-  text-align: center;
-  padding: 20px;
-  font-size: 1.0em;
-  line-height: 1.4;
-  font-weight: 300;
-
-  /* Animación */
-  opacity: 0;
-  animation: fadeUp 1.2s ease forwards;
-  animation-delay: 0.3s;
-  animation-play-state: paused;
-}
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-
- </style>
- <!-- SweetAlert2 CDN -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+  <!-- SweetAlert2 CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 
+  <!-- PORTADA -->
   <section class="hidden portada">
-  <h1 class="nombres fade">Alejandra y Omar</h1>
-  <h2>NUESTRA BODA</h2>
-  <div class="arrow">
-  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down bounce">
-    <polyline points="6 9 12 15 18 9"></polyline>
-  </svg>
-</div>
-</section>
+    <h1 class="nombres fade">Alejandra y Omar</h1>
+    <h2>NUESTRA BODA</h2>
+    <div class="arrow">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down bounce">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </div>
+  </section>
+
   <section class="frase hidden">
     <p>A veces lo que empieza como una locura,<br> se convierte en lo mejor de tu vida</p>
   </section>
 
+  <!-- FECHA + COUNTDOWN -->
   <section class="hidden">
     <p>TE ESPERAMOS EL DÍA</p>
     <h2>29 de Noviembre</h2>
-  <div class="contador" id="cuentaRegresiva">
-  <div class="bloque"><span id="dias">0</span>Días</div>
-  <div class="bloque"><span id="horas">0</span>Hs</div>
-  <div class="bloque"><span id="minutos">0</span>Min</div>
-  <div class="bloque"><span id="segundos">0</span>Seg</div>
-</div>
-
-
+    <div class="contador" id="cuentaRegresiva">
+      <div class="bloque"><span id="dias">0</span>Días</div>
+      <div class="bloque"><span id="horas">0</span>Hs</div>
+      <div class="bloque"><span id="minutos">0</span>Min</div>
+      <div class="bloque"><span id="segundos">0</span>Seg</div>
     </div>
-  <a 
-  href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+Omar+y+Alejandra&dates=20251129T230000Z/20251130T060000Z&details=¡Te esperamos!+Misa+y+celebración+en+Los+Morillos&location=Parroquia+de+la+Medalla+Milagrosa,+Ciudad+de+México"
-  target="_blank"
->
-  <button class="boton">AGENDAR FECHA</button>
-</a>
+
+    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+Omar+y+Alejandra&dates=20251129T230000Z/20251130T060000Z&details=¡Te esperamos!+Misa+y+celebración+en+Los+Morillos&location=Parroquia+de+la+Medalla+Milagrosa,+Ciudad+de+México" target="_blank">
+      <button class="boton">AGENDAR FECHA</button>
+    </a>
   </section>
 
+  <!-- CEREMONIA -->
   <section class="hidden" style="background-color: #f6f0eb;">
     <img src="/img/icono_iglesia.svg" alt="Iglesia" class="icono">
     <h3>CEREMONIA</h3>
     <p>17:00hs, en la Parroquia de la Inmaculada Concepción de María.</p>
-      <a 
-    href="https://g.co/kgs/RgmiAjN" 
-    target="_blank" 
-    rel="noopener noreferrer"
-  >
-    <button class="boton">LLEGAR A LA CEREMONIA</button>
-  </a>
+    <a href="https://g.co/kgs/RgmiAjN" target="_blank" rel="noopener noreferrer">
+      <button class="boton">LLEGAR A LA CEREMONIA</button>
+    </a>
   </section>
 
+  <!-- CELEBRACIÓN -->
   <section class="hidden">
     <img src="/img/icono_copas.svg" alt="Copas de brindis" class="icono">
     <h3>CELEBRACIÓN</h3>
     <p>Después de la ceremonia festejaremos en el Jardín las Palmas.</p>
     <p>Acompañanos en una noche serena, entre luces suaves, risas compartidas y mucho amor.</p>
-      <a 
-    href="https://g.co/kgs/Vj5S4T5" 
-    target="_blank" 
-    rel="noopener noreferrer"
-  >
-    <button class="boton">LLEGAR A LA CELEBRACIÓN</button>
-  </a>
+    <a href="https://g.co/kgs/Vj5S4T5" target="_blank" rel="noopener noreferrer">
+      <button class="boton">LLEGAR A LA CELEBRACIÓN</button>
+    </a>
   </section>
 
-<section class="hidden" style="background-color: #f6f0eb;">
-   <div class="icono-svg">
-  <img src="/img/historia.svg" alt="historia" />
-  </div>
-  <h3>NUESTRA HISTORIA</h3>
-
-  <div class="carrusel-container">
-    <button class="prev">&#10094;</button>
-
-    <div class="carrusel" id="carruselFotos">
-      <img src="/img/foto1.jpg" alt="foto1" />
-      <img src="/img/foto2.jpg" alt="foto2" />
-      <img src="/img/foto3.jpg" alt="foto3" />
-      <img src="/img/foto4.jpg" alt="foto4" />
-      <img src="/img/foto5.jpg" alt="foto3" />
-      <img src="/img/foto6.jpg" alt="foto4" />
+  <!-- NUESTRA HISTORIA (Carrusel EXISTENTE) -->
+  <section class="hidden" style="background-color: #f6f0eb;">
+    <div class="icono-svg">
+      <img src="/img/historia.svg" alt="historia" />
     </div>
-    <button class="next">&#10095;</button>
-  </div>
-  <button class="boton boton-fotos">Ver fotos</button>
-</section>
-<section class="hidden estilo-bloque" style="background-color: #fff;">
-  <div class="icono-svg">
-    <img src="/img/icono-vestimenta.svg" alt="Código de vestimenta" />
-  </div>
-  <p>Nuestra historia se viste de gala!</p>
-  <h3>Y TÚ TAMBIÉN!!</h3>
-  <p>¡Código de vestimenta!</p>
-  <p>Formal, Blanco reservado para la novia y terracota para las damas.</p>
-</section>
-<!--<section class="hidden estilo-bloque" style="background-color: #f6f0eb;">
-  <div class="icono-svg">
-    <img src="/img/party.svg" alt="party" />
-  </div>
-  <p>¡Nos encantan los niños! pero en esta ocasión queremos una noche de baile, brindis y risas solo para adultos.
-    
-  </p>
-  <h3>¡Gracias por entenderlo y venir con ganas de fiesta!</h3>
-</section>-->
-<div id="galeriaOverlay" class="galeria-overlay hidden">
-  <span class="cerrar" onclick="cerrarGaleria()">&times;</span>
-  <img id="imagenGaleria" src="" alt="Galería" />
-  <button class="nav-galeria prev" onclick="navegarGaleria(-1)">&#10094;</button>
-  <button class="nav-galeria next" onclick="navegarGaleria(1)">&#10095;</button>
-</div>
+    <h3>NUESTRA HISTORIA</h3>
 
-<section class="hidden" style="background-color: #f6f0eb;">
-  <div class="icono-svg">
-    <img src="/img/regalo.svg" alt="regalo" />
-  </div>
-  <h3>REGALOS</h3>
-  <p>Tu presencia ya es nuestro regalo, pero si quieres ayudarnos a empezar con el pie derecho en esta nueva etapa, contaremos con 2 
-    opciones para tí:</p> <br>
-<div class="icono-svg">
-    <img src="/img/amazon.svg" alt="amazon" />
-  </div>
-  <p>Una mesa de regalos en Amazon ( Para los fans del shopping online).</p> 
-
-
-  <a href="https://www.amazon.com.mx/wedding/share/AlejandrayJesusOmar" target="_blank" class="boton" style="display: inline-block; margin-top: 1rem;">
-    Ir a la mesa de regalos
-  </a><br>
-
-  <p>Y una lluvia de sobres el dia del evento ( ¡Ideal para los que odian envolver regalos! )</p> <br>
-  <div class="icono-svg">
-    <img src="/img/sobre.svg" alt="sobre" />
-  </div>
-</section>
-<section class="hidden" style="background-color: #fff; padding: 60px 20px;">
-  <div class="icono-svg">
-    <img src="/img/momentos.svg" alt="momentos" />
-  </div>
-  <h3 style="margin-bottom: 20px;">MOMENTOS ESPECIALES</h3>
-  
-  <div class="collage-grid">
-    <img src="/img/foto1.jpg" alt="foto" />
-    <img src="/img/foto2.jpg" alt="foto" />
-    <img src="/img/foto3.jpg" alt="foto" />
-    <img src="/img/foto4.jpg" alt="foto" />
-    <img src="/img/foto5.jpg" alt="foto" />
-    <img src="/img/foto6.jpg" alt="foto" />
-  </div>
-
-  <!-- Botón para ver galería -->
-  <div style="text-align: center; margin-top: 20px;">
-    <button id="verMasBtn" class="btn-galeria">Ver más fotos</button>
-  </div>
-</section>
-
-<!-- Galería Modal -->
-<div id="galeriaModal" class="modal-galeria">
-  <span class="cerrar">&times;</span>
-  <img class="modal-contenido" id="imagenGrande" />
-  <a class="anterior">&#10094;</a>
-  <a class="siguiente">&#10095;</a>
-</div>
-
-<section class="hidden" style="background-color: #f6f0eb;">
-   <div class="icono-svg">
-  <img src="/img/acept.svg" alt="acept" />
-  </div>
-  <h3>¡Ahora te toca decir "SÍ ACEPTO" a nuestra invitación!</h3>
-  <form id="form-confirmar" style="margin-top: 20px;">
-  <input type="hidden" name="codigo" id="codigoConfirmar">
-  <button class="boton" type="submit">¡CONFIRMAR ASISTENCIA!</button>
-</form>
-</section>
-<section class="agradecimiento hidden" id="finalGracias">
-  <div class="agradecimiento-imagen">
-    <img src="/img/agradecimiento.jpg" alt="Gracias por ser parte" />
-    <div class="agradecimiento-texto">
-      <p>¡Gracias por ser parte de este capítulo<br>tan importante de nuestras vidas!</p>
+    <div class="carrusel-container">
+      <button class="prev">&#10094;</button>
+      <div class="carrusel" id="carruselFotos">
+        <img src="/img/foto1.jpg" alt="foto1" />
+        <img src="/img/foto2.jpg" alt="foto2" />
+        <img src="/img/foto3.jpg" alt="foto3" />
+        <img src="/img/foto4.jpg" alt="foto4" />
+        <img src="/img/foto5.jpg" alt="foto3" />
+        <img src="/img/foto6.jpg" alt="foto4" />
+      </div>
+      <button class="next">&#10095;</button>
     </div>
+    <button class="boton boton-fotos">Ver fotos</button>
+  </section>
+
+  <!-- CÓDIGO DE VESTIMENTA -->
+  <section class="hidden estilo-bloque" style="background-color: #fff;">
+    <div class="icono-svg">
+      <img src="/img/icono-vestimenta.svg" alt="Código de vestimenta" />
+    </div>
+    <p>Nuestra historia se viste de gala!</p>
+    <h3>Y TÚ TAMBIÉN!!</h3>
+    <p>¡Código de vestimenta!</p>
+    <p>Formal, Blanco reservado para la novia y terracota para las damas.</p>
+  </section>
+
+  <!-- Overlay galería pequeña del carrusel -->
+  <div id="galeriaOverlay" class="galeria-overlay hidden">
+    <span class="cerrar" onclick="cerrarGaleria()">&times;</span>
+    <img id="imagenGaleria" src="" alt="Galería" />
+    <button class="nav-galeria prev" onclick="navegarGaleria(-1)">&#10094;</button>
+    <button class="nav-galeria next" onclick="navegarGaleria(1)">&#10095;</button>
   </div>
-</section>
 
+  <!-- REGALOS -->
+  <section class="hidden" style="background-color: #f6f0eb;">
+    <div class="icono-svg">
+      <img src="/img/regalo.svg" alt="regalo" />
+    </div>
+    <h3>REGALOS</h3>
+    <p>Tu presencia ya es nuestro regalo, pero si quieres ayudarnos a empezar con el pie derecho en esta nueva etapa, contaremos con 2 opciones para tí:</p><br>
+    <div class="icono-svg">
+      <img src="/img/amazon.svg" alt="amazon" />
+    </div>
+    <p>Una mesa de regalos en Amazon ( Para los fans del shopping online).</p>
+    <a href="https://www.amazon.com.mx/wedding/share/AlejandrayJesusOmar" target="_blank" class="boton" style="display: inline-block; margin-top: 1rem;">
+      Ir a la mesa de regalos
+    </a><br>
+    <p>Y una lluvia de sobres el dia del evento ( ¡Ideal para los que odian envolver regalos! )</p><br>
+    <div class="icono-svg">
+      <img src="/img/sobre.svg" alt="sobre" />
+    </div>
+  </section>
 
-<script>
-  // Scroll fade-in
- const sections = document.querySelectorAll('section');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
+  <!-- MOMENTOS ESPECIALES + Botón “Ver más fotos” -->
+  <section class="hidden" style="background-color: #fff; padding: 60px 20px;">
+    <div class="icono-svg">
+      <img src="/img/momentos.svg" alt="momentos" />
+    </div>
+    <h3 style="margin-bottom: 20px;">MOMENTOS ESPECIALES</h3>
+    <div class="collage-grid">
+      <img src="/img/foto1.jpg" alt="foto" />
+      <img src="/img/foto2.jpg" alt="foto" />
+      <img src="/img/foto3.jpg" alt="foto" />
+      <img src="/img/foto4.jpg" alt="foto" />
+      <img src="/img/foto5.jpg" alt="foto" />
+      <img src="/img/foto6.jpg" alt="foto" />
+    </div>
+    <div style="text-align: center; margin-top: 20px;">
+      <button id="verMasBtn" class="btn-galeria">Ver más fotos</button>
+    </div>
+  </section>
 
-      // Activa animación del texto de agradecimiento
-      if (entry.target.id === 'finalGracias') {
-        const texto = entry.target.querySelector('.agradecimiento-texto');
-        texto.style.opacity = '1';
-        texto.style.animationPlayState = 'running';
+  <!-- Modal “Ver más fotos” -->
+  <div id="galeriaModal" class="modal-galeria">
+    <span class="cerrar" id="cerrarGaleria">&times;</span>
+    <img class="modal-contenido" id="imagenGrande" alt="Foto ampliada" />
+    <a class="anterior" id="prevGaleria">&#10094;</a>
+    <a class="siguiente" id="nextGaleria">&#10095;</a>
+  </div>
+
+  <!-- CONFIRMAR ASISTENCIA -->
+  <section class="hidden" style="background-color: #f6f0eb;">
+    <div class="icono-svg">
+      <img src="/img/acept.svg" alt="acept" />
+    </div>
+    <h3>¡Ahora te toca decir "SÍ ACEPTO" a nuestra invitación!</h3>
+    <form id="form-confirmar" style="margin-top: 20px;">
+      <input type="hidden" name="codigo" id="codigoConfirmar">
+      <button class="boton" type="submit">¡CONFIRMAR ASISTENCIA!</button>
+    </form>
+  </section>
+
+  <!-- AGRADECIMIENTO -->
+  <section class="agradecimiento hidden" id="finalGracias">
+    <div class="agradecimiento-imagen">
+      <img src="/img/agradecimiento.jpg" alt="Gracias por ser parte" />
+      <div class="agradecimiento-texto">
+        <p>¡Gracias por ser parte de este capítulo<br>tan importante de nuestras vidas!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= SCRIPTS ======= -->
+  <script>
+    // Fade-in por scroll
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          if (entry.target.id === 'finalGracias') {
+            const texto = entry.target.querySelector('.agradecimiento-texto');
+            texto.style.opacity = '1';
+            texto.style.animationPlayState = 'running';
+          }
+        }
+      });
+    }, { threshold: 0.1 });
+    sections.forEach(sec => observer.observe(sec));
+  </script>
+
+  <script>
+    // Cuenta regresiva
+    const cuentaRegresiva = () => {
+      const final = new Date("2025-11-29T00:00:00").getTime();
+      const ahora = new Date().getTime();
+      const diferencia = final - ahora;
+
+      const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+      const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+      document.getElementById("dias").textContent = dias;
+      document.getElementById("horas").textContent = horas;
+      document.getElementById("minutos").textContent = minutos;
+      document.getElementById("segundos").textContent = segundos;
+    };
+    setInterval(cuentaRegresiva, 1000);
+    cuentaRegresiva();
+  </script>
+
+  <script>
+    // Carrusel (MISMO HTML; solo ajusté nombres de variables para evitar choques)
+    const carruselFotos = document.getElementById('carruselFotos');
+    const btnPrevCarrusel = document.querySelector('.carrusel-container .prev');
+    const btnNextCarrusel = document.querySelector('.carrusel-container .next');
+
+    let autoSlideIntervalCarrusel;
+    function autoSlideCarrusel() {
+      autoSlideIntervalCarrusel = setInterval(() => {
+        carruselFotos.scrollBy({ left: 230, behavior: 'smooth' });
+      }, 3000);
+    }
+    function stopAutoSlideCarrusel() {
+      clearInterval(autoSlideIntervalCarrusel);
+    }
+    if (btnPrevCarrusel && btnNextCarrusel && carruselFotos) {
+      btnPrevCarrusel.addEventListener('click', () => {
+        carruselFotos.scrollBy({ left: -230, behavior: 'smooth' });
+        stopAutoSlideCarrusel();
+      });
+      btnNextCarrusel.addEventListener('click', () => {
+        carruselFotos.scrollBy({ left: 230, behavior: 'smooth' });
+        stopAutoSlideCarrusel();
+      });
+      autoSlideCarrusel();
+    }
+  </script>
+
+  <script>
+    // Overlay galería pequeña de “NUESTRA HISTORIA”
+    const imagenes = [
+      "/img/foto1.jpg","/img/foto2.jpg","/img/foto3.jpg",
+      "/img/foto4.jpg","/img/foto5.jpg","/img/foto6.jpg"
+    ];
+    let indiceActual = 0;
+    function abrirGaleria() {
+      document.getElementById('galeriaOverlay').classList.remove('hidden');
+      document.getElementById('imagenGaleria').src = imagenes[indiceActual];
+    }
+    function cerrarGaleria() {
+      document.getElementById('galeriaOverlay').classList.add('hidden');
+    }
+    function navegarGaleria(direccion) {
+      indiceActual += direccion;
+      if (indiceActual < 0) indiceActual = imagenes.length - 1;
+      if (indiceActual >= imagenes.length) indiceActual = 0;
+      document.getElementById('imagenGaleria').src = imagenes[indiceActual];
+    }
+    document.querySelector('.boton-fotos').addEventListener('click', abrirGaleria);
+  </script>
+
+  <script>
+    // Auto-scroll extra (si existe un #carrusel)
+    const carruselAuto = document.getElementById('carrusel');
+    if (carruselAuto) {
+      let scrollAmount = 0;
+      const velocidad = 0.5;
+      function autoScroll() {
+        scrollAmount += velocidad;
+        if (scrollAmount >= carruselAuto.scrollWidth - carruselAuto.clientWidth) {
+          scrollAmount = 0;
+        }
+        carruselAuto.scrollLeft = scrollAmount;
       }
+      let autoSlideCarrusel2 = setInterval(autoScroll, 30);
+      carruselAuto.addEventListener('mouseover', () => clearInterval(autoSlideCarrusel2));
+      carruselAuto.addEventListener('mouseout', () => { autoSlideCarrusel2 = setInterval(autoScroll, 20); });
     }
-  });
-}, {
-  threshold: 0.1
-});
+  </script>
 
-sections.forEach(sec => observer.observe(sec));
-
-
-  // Cuenta regresiva
-  const cuentaRegresiva = () => {
-    const final = new Date("2025-11-29T00:00:00").getTime();
-    const ahora = new Date().getTime();
-    const diferencia = final - ahora;
-
-    const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-    const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
-    const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
-
-    document.getElementById("dias").textContent = dias;
-    document.getElementById("horas").textContent = horas;
-    document.getElementById("minutos").textContent = minutos;
-    document.getElementById("segundos").textContent = segundos;
-  };
-
-  setInterval(cuentaRegresiva, 1000);
-  cuentaRegresiva();
-</script>
-
-<script>
-  const carruselFotos = document.getElementById('carruselFotos');
-  let autoSlideInterval;
-
-  function autoSlide() {
-    autoSlideInterval = setInterval(() => {
-      carruselFotos.scrollBy({ left: 230, behavior: 'smooth' });
-    }, 3000);
-  }
-
-  function stopAutoSlide() {
-    clearInterval(autoSlideInterval);
-  }
-
-  prevBtn.addEventListener('click', () => {
-    carruselFotos.scrollBy({ left: -230, behavior: 'smooth' });
-    stopAutoSlide();
-  });
-
-  nextBtn.addEventListener('click', () => {
-    carruselFotos.scrollBy({ left: 230, behavior: 'smooth' });
-    stopAutoSlide();
-  });
-
-  autoSlide();
-</script>
-
-<script>
-  const imagenes = [
-    "/img/foto1.jpg",
-    "/img/foto2.jpg",
-    "/img/foto3.jpg",
-    "/img/foto4.jpg",
-    "/img/foto5.jpg",
-    "/img/foto6.jpg"
-  ];
-
-  let indiceActual = 0;
-
-  function abrirGaleria() {
-    document.getElementById('galeriaOverlay').classList.remove('hidden');
-    document.getElementById('imagenGaleria').src = imagenes[indiceActual];
-  }
-
-  function cerrarGaleria() {
-    document.getElementById('galeriaOverlay').classList.add('hidden');
-  }
-
-  function navegarGaleria(direccion) {
-    indiceActual += direccion;
-    if (indiceActual < 0) indiceActual = imagenes.length - 1;
-    if (indiceActual >= imagenes.length) indiceActual = 0;
-    document.getElementById('imagenGaleria').src = imagenes[indiceActual];
-  }
-
-  document.querySelector('.boton-fotos').addEventListener('click', abrirGaleria);
-</script>
-
-<script>
-  const carruselAuto = document.getElementById('carrusel');
-
-  let scrollAmount = 0;
-  const velocidad = 0.5;
-
-  function autoScroll() {
-    scrollAmount += velocidad;
-    if (scrollAmount >= carruselAuto.scrollWidth - carruselAuto.clientWidth) {
-      scrollAmount = 0;
+  <script>
+    // Mostrar/Ocultar CLABE (si lo usas)
+    function mostrarClabe() {
+      const info = document.getElementById('clabeInfo');
+      if (info) info.style.display = info.style.display === 'none' ? 'block' : 'none';
     }
-    carruselAuto.scrollLeft = scrollAmount;
-  }
+  </script>
 
-  let autoSlideCarrusel = setInterval(autoScroll, 30);
+  <script>
+    // Inyectar código de invitado si existe
+    const data = JSON.parse(localStorage.getItem('invitado'));
+    if (data && data.codigo) {
+      const inputCodigo = document.getElementById('codigoConfirmar');
+      if (inputCodigo) inputCodigo.value = data.codigo;
+    }
+  </script>
 
-  carruselAuto.addEventListener('mouseover', () => clearInterval(autoSlideCarrusel));
-  carruselAuto.addEventListener('mouseout', () => {
-    autoSlideCarrusel = setInterval(autoScroll, 20);
-  });
-</script>
-
-<script>
-  function mostrarClabe() {
-    const info = document.getElementById('clabeInfo');
-    info.style.display = info.style.display === 'none' ? 'block' : 'none';
-  }
-</script>
-<script>
-  const data = JSON.parse(localStorage.getItem('invitado'));
-  if (data && data.codigo) {
-    const inputCodigo = document.getElementById('codigoConfirmar');
-    if (inputCodigo) inputCodigo.value = data.codigo;
-  }
-</script>
-<script>
-  const invitado = localStorage.getItem('invitado');
-  if (!invitado) {
-    alert("Debes ingresar tu código de invitación.");
-    window.location.href = "/";
-  }
-</script>
-
-
-<audio id="musica-fondo" preload="auto">
-  <source src="/musica/miboda.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-  const audio = document.getElementById('musica-fondo');
-
-  // Intenta reproducir automáticamente al cargar
-  window.addEventListener('DOMContentLoaded', () => {
-    // Precargar el audio en cuanto esté disponible
-    audio.load();
-
-    // Algunos navegadores permiten reproducción directa
-    audio.play().catch(() => {
-      // Si fue bloqueado, habilita con primer clic
-      document.body.addEventListener('click', () => {
-        audio.play();
-      }, { once: true });
-    });
-  });
-</script>
-<script>
-  document.getElementById('form-confirmar').addEventListener('submit', function(e) {
-    e.preventDefault(); // Evita que el formulario se envíe de forma tradicional
-
+  <script>
+    // Redirigir si no hay invitado en localStorage
     const invitado = localStorage.getItem('invitado');
     if (!invitado) {
-      alert("Invitado no válido.");
-      return;
+      alert("Debes ingresar tu código de invitación.");
+      window.location.href = "/";
     }
+  </script>
 
-    const data = JSON.parse(invitado);
+  <!-- Música de fondo -->
+  <audio id="musica-fondo" preload="auto">
+    <source src="/musica/miboda.mp3" type="audio/mpeg">
+  </audio>
 
-    fetch('/confirmar', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ codigo: data.codigo })
-    })
-    .then(response => response.text())
-    .then(html => {
-      document.open();
-      document.write(html);
-      document.close();
-    })
-    .catch(error => {
-      Swal.fire({
-        title: 'Error',
-        text: 'Hubo un problema al confirmar. Intenta nuevamente.',
-        icon: 'error',
-        confirmButtonText: 'Cerrar'
+  <script>
+    // Autoplay con primer clic si el navegador lo bloquea
+    const audio = document.getElementById('musica-fondo');
+    window.addEventListener('DOMContentLoaded', () => {
+      audio.load();
+      audio.play().catch(() => {
+        document.body.addEventListener('click', () => { audio.play(); }, { once: true });
       });
     });
-  });
-</script>
+  </script>
 
-<script>
-  // Lista de fotos extra
-  const fotos = [
-    "/img/foto7.jpg",
-    "/img/foto8.jpg",
-    "/img/foto9.jpg",
-    "/img/foto10.jpg"
-  ];
+  <script>
+    // Enviar confirmación
+    document.getElementById('form-confirmar').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const invitado = localStorage.getItem('invitado');
+      if (!invitado) { alert("Invitado no válido."); return; }
+      const data = JSON.parse(invitado);
 
-  let indice = 0;
-  const modal = document.getElementById("galeriaModal");
-  const galeriaImagen = document.getElementById("galeriaImagen");
-  const closeBtn = document.querySelector(".close");
-  const prevBtn = document.querySelector(".prev");
-  const nextBtn = document.querySelector(".next");
+      fetch('/confirmar', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ codigo: data.codigo })
+      })
+      .then(response => response.text())
+      .then(html => { document.open(); document.write(html); document.close(); })
+      .catch(() => {
+        Swal.fire({ title: 'Error', text: 'Hubo un problema al confirmar. Intenta nuevamente.', icon: 'error', confirmButtonText: 'Cerrar' });
+      });
+    });
+  </script>
 
-  // Abrir modal
-  document.getElementById("openGalleryBtn").addEventListener("click", () => {
-    modal.style.display = "block";
-    indice = 0;
-    galeriaImagen.src = fotos[indice];
-  });
+  <script>
+    // Galería “Ver más fotos” (NUEVA) —> coloca foto7..foto10 en /public/img/
+    const fotosGaleria = [
+      "/img/foto7.jpg","/img/foto8.jpg","/img/foto9.jpg","/img/foto10.jpg"
+    ];
+    let idxGaleria = 0;
 
-  // Cerrar modal
-  closeBtn.onclick = () => modal.style.display = "none";
+    const modalGaleria     = document.getElementById("galeriaModal");
+    const imagenGrande     = document.getElementById("imagenGrande");
+    const btnAbrirGaleria  = document.getElementById("verMasBtn");
+    const btnCerrarGaleria = document.getElementById("cerrarGaleria");
+    const btnPrevGaleria   = document.getElementById("prevGaleria");
+    const btnNextGaleria   = document.getElementById("nextGaleria");
 
-  // Flechas
-  nextBtn.onclick = () => {
-    indice = (indice + 1) % fotos.length;
-    galeriaImagen.src = fotos[indice];
-  };
-  prevBtn.onclick = () => {
-    indice = (indice - 1 + fotos.length) % fotos.length;
-    galeriaImagen.src = fotos[indice];
-  };
-
-  // Cerrar con clic fuera
-  window.onclick = (e) => {
-    if (e.target == modal) modal.style.display = "none";
-  };
-</script>
-
+    if (btnAbrirGaleria) {
+      btnAbrirGaleria.addEventListener("click", () => {
+        if (!fotosGaleria.length) return;
+        idxGaleria = 0;
+        imagenGrande.src = fotosGaleria[idxGaleria];
+        modalGaleria.style.display = "block";
+      });
+    }
+    if (btnCerrarGaleria) {
+      btnCerrarGaleria.addEventListener("click", () => { modalGaleria.style.display = "none"; });
+    }
+    if (btnNextGaleria) {
+      btnNextGaleria.addEventListener("click", () => {
+        idxGaleria = (idxGaleria + 1) % fotosGaleria.length;
+        imagenGrande.src = fotosGaleria[idxGaleria];
+      });
+    }
+    if (btnPrevGaleria) {
+      btnPrevGaleria.addEventListener("click", () => {
+        idxGaleria = (idxGaleria - 1 + fotosGaleria.length) % fotosGaleria.length;
+        imagenGrande.src = fotosGaleria[idxGaleria];
+      });
+    }
+    modalGaleria.addEventListener("click", (e) => {
+      if (e.target === modalGaleria) modalGaleria.style.display = "none";
+    });
+    document.addEventListener('keydown', (e) => {
+      if (modalGaleria.style.display === "block") {
+        if (e.key === 'Escape') modalGaleria.style.display = "none";
+        if (e.key === 'ArrowRight') btnNextGaleria.click();
+        if (e.key === 'ArrowLeft') btnPrevGaleria.click();
+      }
+    });
+  </script>
 
 </body>
+</html>
