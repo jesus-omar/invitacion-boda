@@ -764,9 +764,6 @@ sections.forEach(sec => observer.observe(sec));
 
 <script>
   const carruselFotos = document.getElementById('carruselFotos');
-  const prevBtn = document.querySelector('.prev');
-  const nextBtn = document.querySelector('.next');
-
   let autoSlideInterval;
 
   function autoSlide() {
@@ -923,25 +920,7 @@ sections.forEach(sec => observer.observe(sec));
     });
   });
 </script>
-<script>
-  const verMasBtn = document.getElementById("verMasBtn");
-  const modal = document.getElementById("galeriaModal");
-  const cerrar = document.querySelector(".cerrar");
 
-  verMasBtn.addEventListener("click", () => {
-    modal.style.display = "block";
-  });
-
-  cerrar.addEventListener("click", () => {
-    modal.style.display = "none";
-  });
-
-  window.addEventListener("click", (e) => {
-    if (e.target === modal) {
-      modal.style.display = "none";
-    }
-  });
-</script>
 <script>
   // Lista de fotos extra
   const fotos = [
