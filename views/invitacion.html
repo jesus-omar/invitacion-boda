@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+te voy a pasar el codigo de la invitacion completo para que me ayudes a agregar los cambios con el codigo que me acabas de pasar pero quiero que me lo acomodes y me des el codigo completito no partes no quiero romper ni mover lo que ya sirve <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -36,13 +36,14 @@
       background-position: center;
       background-repeat: no-repeat;
       padding: 40px 20px;
+      border-radius: 12px;
       width: 100%;
     }
     .portada::before {
       content: "";
       position: absolute; inset: 0;
       background-color: rgba(0, 0, 0, 0.6);
-      z-index: 0; border-radius: 0px;
+      z-index: 0; border-radius: 12px;
     }
     .portada > * { position: relative; z-index: 1; }
     .portada h1, .portada h2, .portada .arrow svg { color: #fff; fill: #fff; stroke: #fff; z-index: 1; }
@@ -486,7 +487,7 @@
     });
   </script>
 
-<script>
+  <script>
   // Galería “Ver más fotos” — ahora incluye las 6 primeras + extras
   const fotosGaleria = [
     "/img/foto1.jpg","/img/foto2.jpg","/img/foto3.jpg",
