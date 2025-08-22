@@ -487,54 +487,71 @@
     });
   </script>
 
-  <script>
-    // Galería “Ver más fotos” (NUEVA) —> coloca foto7..foto10 en /public/img/
-    const fotosGaleria = [
-      "/img/foto7.jpg","/img/foto8.jpg","/img/foto9.jpg","/img/foto10.jpg"
-    ];
-    let idxGaleria = 0;
+<script>
+  // Galería “Ver más fotos” — ahora incluye las 6 primeras + extras
+  const fotosGaleria = [
+    "/img/foto1.jpg","/img/foto2.jpg","/img/foto3.jpg",
+    "/img/foto4.jpg","/img/foto5.jpg","/img/foto6.jpg",
+    "/img/foto7.jpg","/img/foto8.jpg","/img/foto9.jpg","/img/foto10.jpg"
+  ];
 
-    const modalGaleria     = document.getElementById("galeriaModal");
-    const imagenGrande     = document.getElementById("imagenGrande");
-    const btnAbrirGaleria  = document.getElementById("verMasBtn");
-    const btnCerrarGaleria = document.getElementById("cerrarGaleria");
-    const btnPrevGaleria   = document.getElementById("prevGaleria");
-    const btnNextGaleria   = document.getElementById("nextGaleria");
+  let idxGaleria = 0;
 
-    if (btnAbrirGaleria) {
-      btnAbrirGaleria.addEventListener("click", () => {
-        if (!fotosGaleria.length) return;
-        idxGaleria = 0;
-        imagenGrande.src = fotosGaleria[idxGaleria];
-        modalGaleria.style.display = "block";
-      });
-    }
-    if (btnCerrarGaleria) {
-      btnCerrarGaleria.addEventListener("click", () => { modalGaleria.style.display = "none"; });
-    }
-    if (btnNextGaleria) {
-      btnNextGaleria.addEventListener("click", () => {
-        idxGaleria = (idxGaleria + 1) % fotosGaleria.length;
-        imagenGrande.src = fotosGaleria[idxGaleria];
-      });
-    }
-    if (btnPrevGaleria) {
-      btnPrevGaleria.addEventListener("click", () => {
-        idxGaleria = (idxGaleria - 1 + fotosGaleria.length) % fotosGaleria.length;
-        imagenGrande.src = fotosGaleria[idxGaleria];
-      });
-    }
-    modalGaleria.addEventListener("click", (e) => {
-      if (e.target === modalGaleria) modalGaleria.style.display = "none";
+  const modalGaleria     = document.getElementById("galeriaModal");
+  const imagenGrande     = document.getElementById("imagenGrande");
+  const btnAbrirGaleria  = document.getElementById("verMasBtn");
+  const btnCerrarGaleria = document.getElementById("cerrarGaleria");
+  const btnPrevGaleria   = document.getElementById("prevGaleria");
+  const btnNextGaleria   = document.getElementById("nextGaleria");
+
+  // Abrir modal en la PRIMERA foto de la serie
+  if (btnAbrirGaleria) {
+    btnAbrirGaleria.addEventListener("click", () => {
+      if (!fotosGaleria.length) return;
+      idxGaleria = 0; // 👉 inicia desde la foto1
+      imagenGrande.src = fotosGaleria[idxGaleria];
+      modalGaleria.style.display = "block";
     });
-    document.addEventListener('keydown', (e) => {
-      if (modalGaleria.style.display === "block") {
-        if (e.key === 'Escape') modalGaleria.style.display = "none";
-        if (e.key === 'ArrowRight') btnNextGaleria.click();
-        if (e.key === 'ArrowLeft') btnPrevGaleria.click();
-      }
+  }
+
+  // Cerrar modal
+  if (btnCerrarGaleria) {
+    btnCerrarGaleria.addEventListener("click", () => {
+      modalGaleria.style.display = "none";
     });
-  </script>
+  }
+
+  // Navegación siguiente
+  if (btnNextGaleria) {
+    btnNextGaleria.addEventListener("click", () => {
+      idxGaleria = (idxGaleria + 1) % fotosGaleria.length;
+      imagenGrande.src = fotosGaleria[idxGaleria];
+    });
+  }
+
+  // Navegación anterior
+  if (btnPrevGaleria) {
+    btnPrevGaleria.addEventListener("click", () => {
+      idxGaleria = (idxGaleria - 1 + fotosGaleria.length) % fotosGaleria.length;
+      imagenGrande.src = fotosGaleria[idxGaleria];
+    });
+  }
+
+  // Cerrar al hacer clic fuera
+  modalGaleria.addEventListener("click", (e) => {
+    if (e.target === modalGaleria) modalGaleria.style.display = "none";
+  });
+
+  // Navegación con teclado
+  document.addEventListener('keydown', (e) => {
+    if (modalGaleria.style.display === "block") {
+      if (e.key === 'Escape') modalGaleria.style.display = "none";
+      if (e.key === 'ArrowRight') btnNextGaleria.click();
+      if (e.key === 'ArrowLeft') btnPrevGaleria.click();
+    }
+  });
+</script>
+
 
 </body>
 </html>
