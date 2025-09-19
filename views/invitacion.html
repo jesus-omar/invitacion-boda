@@ -30,15 +30,25 @@
 
     /* Portada con imagen y overlay oscuro SOLO en esa sección */
     .portada {
-      position: relative;
-      background-image: url('/img/fondo-boda.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      padding: 40px 20px;
-      border-radius: 0px;
-      width: 100%;
-    }
+  position: relative;
+
+  /* Fallback primero (jpg) */
+  background-image: url('/img/fondo-boda.jpg');
+
+  /* Navegadores modernos usan WebP si pueden */
+  background-image: image-set(
+    url('/img/fondo-boda.webp') type("image/webp"),
+    url('/img/fondo-boda.jpg') type("image/jpeg")
+  );
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 40px 20px;
+  border-radius: 0px;
+  width: 100%;
+}
+
     .portada::before {
       content: "";
       position: absolute; inset: 0;
@@ -164,7 +174,7 @@
   </section>
 
   <section class="frase hidden">
-    <p>A veces, la locura más inesperada, se convierte</p> <p>en la historia de amor mas hermosa de tu vida.</p>
+    <p>A veces, la locura más inesperada, se convierte <br>en la historia de amor mas hermosa de tu vida.</p>
   </section>
 
   <!-- FECHA + COUNTDOWN -->
