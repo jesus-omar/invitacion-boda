@@ -89,13 +89,13 @@
     .carrusel img { height: 220px; border-radius: 10px; scroll-snap-align: center; flex: 0 0 auto; transition: transform 0.3s ease; }
     .carrusel img:hover { transform: scale(1.05); }
     .carrusel-container { position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; width: 100%; padding: 20px 0; }
-    .prev, .next {
+    /*.prev, .next {
       position: absolute; top: 50%; transform: translateY(-50%);
       background-color: rgba(210,180,156,0.8); border: none; font-size: 2rem; color: #fff;
       padding: 10px; cursor: pointer; z-index: 1; border-radius: 50%;
     }
     .prev:hover, .next:hover { background-color: rgba(180,150,130,0.9); }
-    .prev { left: 10px; } .next { right: 10px; }
+    .prev { left: 10px; } .next { right: 10px; }*/
 
     /* Overlay galería pequeña (NUESTRA HISTORIA) */
     .galeria-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -391,17 +391,21 @@
     function stopAutoSlideCarrusel() {
       clearInterval(autoSlideIntervalCarrusel);
     }
-    if (btnPrevCarrusel && btnNextCarrusel && carruselFotos) {
-      btnPrevCarrusel.addEventListener('click', () => {
-        carruselFotos.scrollBy({ left: -230, behavior: 'smooth' });
-        stopAutoSlideCarrusel();
-      });
-      btnNextCarrusel.addEventListener('click', () => {
-        carruselFotos.scrollBy({ left: 230, behavior: 'smooth' });
-        stopAutoSlideCarrusel();
-      });
-      autoSlideCarrusel();
-    }
+    if (carruselFotos) {
+  autoSlideCarrusel();
+}
+
+   // if (btnPrevCarrusel && btnNextCarrusel && carruselFotos) {
+    //  btnPrevCarrusel.addEventListener('click', () => {
+     //   carruselFotos.scrollBy({ left: -230, behavior: 'smooth' });
+     //   stopAutoSlideCarrusel();
+     // });
+    //  btnNextCarrusel.addEventListener('click', () => {
+     //   carruselFotos.scrollBy({ left: 230, behavior: 'smooth' });
+   //     stopAutoSlideCarrusel();
+    //  });
+    //  autoSlideCarrusel();
+  //  }
   </script>
 
   <script>
