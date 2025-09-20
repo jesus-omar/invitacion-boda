@@ -383,11 +383,20 @@
     const btnNextCarrusel = document.querySelector('.carrusel-container .next');
 
     let autoSlideIntervalCarrusel;
-    function autoSlideCarrusel() {
-      autoSlideIntervalCarrusel = setInterval(() => {
-        carruselFotos.scrollBy({ left: 230, behavior: 'smooth' });
-      }, 3000);
+   function autoSlideCarrusel() {
+  autoSlideInterval = setInterval(() => {
+    const maxScrollLeft = carruselFotos.scrollWidth - carruselFotos.clientWidth;
+
+    if (carruselFotos.scrollLeft >= maxScrollLeft - 5) {
+      // Si ya llegó al final, regresa al inicio
+      carruselFotos.scrollTo({ left: 0, behavior: 'smooth' });
+    } else {
+      // Si no, sigue avanzando
+      carruselFotos.scrollBy({ left: 230, behavior: 'smooth' });
     }
+  }, 3000);
+}
+
     function stopAutoSlideCarrusel() {
       clearInterval(autoSlideIntervalCarrusel);
     }
