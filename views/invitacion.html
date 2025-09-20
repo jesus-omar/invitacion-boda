@@ -242,6 +242,26 @@
         <img src="/img/foto16.jpg" alt="foto16" />
         <img src="/img/foto17.jpg" alt="foto17" />
         <img src="/img/foto18.jpg" alt="foto18" />
+
+           <!-- Duplicadas-->
+        <img src="/img/foto1.jpg" alt="foto1" class="clone"/>
+        <img src="/img/foto2.jpg" alt="foto2" class="clone"/>
+        <img src="/img/foto3.jpg" alt="foto3" class="clone"/>
+        <img src="/img/foto4.jpg" alt="foto4" class="clone"/>
+        <img src="/img/foto5.jpg" alt="foto5" class="clone"/>
+        <img src="/img/foto6.jpg" alt="foto6" class="clone"/>
+        <img src="/img/foto7.jpg" alt="foto7" class="clone"/>
+        <img src="/img/foto8.jpg" alt="foto8" class="clone"/>
+        <img src="/img/foto9.jpg" alt="foto9" class="clone"/>
+        <img src="/img/foto10.jpg" alt="foto10" class="clone"/>
+        <img src="/img/foto11.jpg" alt="foto11" class="clone"/>
+        <img src="/img/foto12.jpg" alt="foto12" class="clone"/>
+        <img src="/img/foto13.jpg" alt="foto13" class="clone"/>
+        <img src="/img/foto14.jpg" alt="foto14" class="clone"/>
+        <img src="/img/foto15.jpg" alt="foto15" class="clone"/>
+        <img src="/img/foto16.jpg" alt="foto16" class="clone"/>
+        <img src="/img/foto17.jpg" alt="foto17" class="clone"/>
+        <img src="/img/foto18.jpg" alt="foto18" class="clone"/>
       </div>
      <!--  <button class="next">&#10095;</button>-->
     </div>
@@ -387,15 +407,16 @@
   autoSlideInterval = setInterval(() => {
     const maxScrollLeft = carruselFotos.scrollWidth - carruselFotos.clientWidth;
 
+    // Avanzar como siempre
+    carruselFotos.scrollBy({ left: 230, behavior: 'smooth' });
+
+    // Cuando llegamos al final de las duplicadas, reiniciamos sin animación
     if (carruselFotos.scrollLeft >= maxScrollLeft - 5) {
-      // Si ya llegó al final, regresa al inicio
-      carruselFotos.scrollTo({ left: 0, behavior: 'smooth' });
-    } else {
-      // Si no, sigue avanzando
-      carruselFotos.scrollBy({ left: 230, behavior: 'smooth' });
+      carruselFotos.scrollTo({ left: 0, behavior: 'auto' }); 
     }
   }, 3000);
 }
+
 
     function stopAutoSlideCarrusel() {
       clearInterval(autoSlideIntervalCarrusel);
