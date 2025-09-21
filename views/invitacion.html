@@ -510,26 +510,30 @@
     }
   </script>
 
-  <!-- Música de fondo -->
-  <audio id="musica-fondo" preload="auto">
-    <source src="/musica/miboda.mp3" type="audio/mpeg">
-  </audio>
+<!-- Música de fondo -->
+<audio id="musica-fondo" preload="auto" loop>
+  <source src="/musica/miboda.mp3" type="audio/mpeg">
+</audio>
 
-  <!-- Música de fondo -->
-  <audio id="musica-fondo" preload="auto">
-    <source src="/musica/miboda.mp3" type="audio/mpeg">
-  </audio>
+<script>
+  const audio = document.getElementById('musica-fondo');
 
-  <script>
-    // Autoplay con primer clic si el navegador lo bloquea
-    const audio = document.getElementById('musica-fondo');
-    window.addEventListener('DOMContentLoaded', () => {
-      audio.load();
+  window.addEventListener('DOMContentLoaded', () => {
+    const playMusic = localStorage.getItem("playMusic");
+
+    if (playMusic === "true") {
+      // intentamos reproducir
       audio.play().catch(() => {
+        // si el navegador lo bloquea, habilitamos con primer clic
         document.body.addEventListener('click', () => { audio.play(); }, { once: true });
       });
-    });
-  </script>
+
+      // limpiamos la bandera para que no quede siempre activa
+      localStorage.removeItem("playMusic");
+    }
+  });
+</script>
+
 
   <script>
     // Enviar confirmación
