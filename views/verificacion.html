@@ -70,30 +70,34 @@ button:hover {
     <button onclick="abrirInvitacion()">Abrir invitación</button>
   </div>
 
-  <script>
-    function abrirInvitacion() {
-      window.location.href = "/invitacion";
-    }
+ <script>
+  function abrirInvitacion() {
+    // Marcamos que debe sonar música
+    localStorage.setItem("playMusic", "true");
 
-    // Leer datos guardados en localStorage
-    const guardado = localStorage.getItem("invitado");
+    // Redirigimos a la invitación
+    window.location.href = "/invitacion";
+  }
 
-    if (guardado) {
-      const invitado = JSON.parse(guardado);
-      document.getElementById("nombres").textContent = invitado.nombre;
-      document.getElementById("accesos").textContent = invitado.accesos;
-    } else {
-      alert("No se encontró información. Regresando...");
-      window.location.href = "/";
-    }
-  </script>
-  <script>
+  // Leer datos guardados en localStorage
+  const guardado = localStorage.getItem("invitado");
+
+  if (guardado) {
+    const invitado = JSON.parse(guardado);
+    document.getElementById("nombres").textContent = invitado.nombre;
+    document.getElementById("accesos").textContent = invitado.accesos;
+  } else {
+    alert("No se encontró información. Regresando...");
+    window.location.href = "/";
+  }
+
   const invitado = localStorage.getItem('invitado');
   if (!invitado) {
     alert("Debes ingresar tu código de invitación.");
     window.location.href = "/";
   }
 </script>
+
 
 </body>
 </html>
