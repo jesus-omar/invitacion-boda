@@ -97,7 +97,7 @@ app.post('/confirmar', express.json(), (req, res) => {
     invitados[index].confirmado = true;
     fs.writeFileSync(ruta, JSON.stringify(invitados, null, 2));
 
-    mostrarMensaje(res, `Gracias por confirmar, ${invitados[index].nombre}!`, '/invitacion');
+    mostrarMensaje(res, `Gracias por confirmar, ${invitados[index].nombre}.`, '/invitacion');
   } catch (err) {
     console.error('Error confirmando:', err);
     res.status(500).send('Error interno del servidor.');
