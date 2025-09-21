@@ -74,16 +74,31 @@ button:hover {
 </audio>
   </div>
 
-<script>
+ <script>
   function abrirInvitacion() {
-    const audio = document.getElementById("musica-fondo");
-    // Inicia la música en el clic
-    audio.play().catch(err => console.log("El navegador bloqueó la música:", err));
+    // Marcamos que debe sonar música
+    localStorage.setItem("playMusic", "true");
 
-    // Espera medio segundo y redirige a la invitación
-    setTimeout(() => {
-      window.location.href = "/invitacion";
-    }, 500);
+    // Redirigimos a la invitación
+    window.location.href = "/invitacion";
+  }
+
+  // Leer datos guardados en localStorage
+  const guardado = localStorage.getItem("invitado");
+
+  if (guardado) {
+    const invitado = JSON.parse(guardado);
+    document.getElementById("nombres").textContent = invitado.nombre;
+    document.getElementById("accesos").textContent = invitado.accesos;
+  } else {
+    alert("No se encontró información. Regresando...");
+    window.location.href = "/";
+  }
+
+  const invitado = localStorage.getItem('invitado');
+  if (!invitado) {
+    alert("Debes ingresar tu código de invitación.");
+    window.location.href = "/";
   }
 </script>
 
