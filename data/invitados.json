@@ -3,14 +3,14 @@
     "codigo": "123ABC",
     "nombre": "Jorge González",
     "accesos": 5,
-    "mesa": "8",
+    "mesa": "",
     "confirmado": false
   },
   {
     "codigo": "456XYZ",
     "nombre": "Sandra y José",
     "accesos": 2,
-    "mesa": "6",
+    "mesa": "",
     "confirmado": false
   }
 ]
