@@ -68,33 +68,22 @@ button:hover {
     <p class="mensaje" style="line-height: 1.8;">La celebración será solo para adultos</p>
     <p class="mensaje" style="line-height: 1.8;">¡Gracias por su comprensión y cariño!</p>
     <button onclick="abrirInvitacion()">Abrir invitación</button>
+
+<audio id="musica-fondo" preload="auto" loop>
+  <source src="/musica/miboda.mp3" type="audio/mpeg">
+</audio>
   </div>
 
- <script>
+<script>
   function abrirInvitacion() {
-    // Marcamos que debe sonar música
-    localStorage.setItem("playMusic", "true");
+    const audio = document.getElementById("musica-fondo");
+    // Inicia la música en el clic
+    audio.play().catch(err => console.log("El navegador bloqueó la música:", err));
 
-    // Redirigimos a la invitación
-    window.location.href = "/invitacion";
-  }
-
-  // Leer datos guardados en localStorage
-  const guardado = localStorage.getItem("invitado");
-
-  if (guardado) {
-    const invitado = JSON.parse(guardado);
-    document.getElementById("nombres").textContent = invitado.nombre;
-    document.getElementById("accesos").textContent = invitado.accesos;
-  } else {
-    alert("No se encontró información. Regresando...");
-    window.location.href = "/";
-  }
-
-  const invitado = localStorage.getItem('invitado');
-  if (!invitado) {
-    alert("Debes ingresar tu código de invitación.");
-    window.location.href = "/";
+    // Espera medio segundo y redirige a la invitación
+    setTimeout(() => {
+      window.location.href = "/invitacion";
+    }, 500);
   }
 </script>
 
