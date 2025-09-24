@@ -11,7 +11,7 @@
     "nombre": "Christian Sánchez y Familia",
     "accesos": 5,
     "mesa": "",
-    "confirmado": true
+    "confirmado": false
   },
   {
     "codigo": "AJ03",
@@ -382,7 +382,7 @@
     "nombre": "Denise Martínez",
     "accesos": 2,
     "mesa": "",
-    "confirmado": true
+    "confirmado": false
   },
   {
     "codigo": "AJ56",
