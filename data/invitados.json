@@ -393,13 +393,20 @@
   },
   {
     "codigo": "AJ57",
-    "nombre": "Montserrat y Mauricio Pérez",
-    "accesos": 2,
+    "nombre": "Mauricio Pérez",
+    "accesos": 1,
+    "mesa": "",
+    "confirmado": false
+  },
+   {
+    "codigo": "AJ58",
+    "nombre": "Montserrat Perez",
+    "accesos": 1,
     "mesa": "",
     "confirmado": false
   },
   {
-    "codigo": "AJ58",
+    "codigo": "AJ59",
     "nombre": "Siara Flores",
     "accesos": 2,
     "mesa": "",
@@ -407,3 +414,5 @@
   }
 
 ]
+
+
