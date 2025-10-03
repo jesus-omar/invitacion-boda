@@ -4,14 +4,14 @@
     "nombre": "Ángel Moreno y Consuelo Chairez",
     "accesos": 2,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ02",
     "nombre": "Christian Sánchez y Familia",
     "accesos": 5,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ03",
@@ -25,14 +25,14 @@
     "nombre": "Carmen Moreno y Familia",
     "accesos": 4,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ05",
     "nombre": "Luis Moreno y Magali Subias",
     "accesos": 4,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ06",
@@ -67,7 +67,7 @@
     "nombre": "Tabata Uc",
     "accesos": 2,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ11",
@@ -144,14 +144,14 @@
     "nombre": "Gabriela del Valle",
     "accesos": 2,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ22",
     "nombre": "Iván Villanueva y Adriana Alvarado",
     "accesos": 4,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ23",
@@ -179,14 +179,14 @@
     "nombre": "Abel y Guadalupe",
     "accesos": 2,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ27",
     "nombre": "Alberto Colunga",
     "accesos": 2,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ28",
@@ -207,28 +207,28 @@
     "nombre": "Angeles Tenorio",
     "accesos": 3,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ31",
     "nombre": "Socorro Álvarez y Gustavo Flores",
     "accesos": 2,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ32",
     "nombre": "Alejandra Álvarez",
     "accesos": 2,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ33",
     "nombre": "Adrian Álvarez",
     "accesos": 2,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ34",
@@ -242,21 +242,21 @@
     "nombre": "Rafael Álvarez y Leticia Salinas",
     "accesos": 2,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ36",
     "nombre": "Adriana Álvarez y Luis Rodríguez",
     "accesos": 2,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ37",
     "nombre": "Dulce Rodríguez y Adrian Álvarez",
     "accesos": 2,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ38",
@@ -270,42 +270,42 @@
     "nombre": "Itzayana Colunga e Ismael Moreno",
     "accesos": 2,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ40",
     "nombre": "Alessandra Giuliana",
     "accesos": 2,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ41",
     "nombre": "Nayeli Azuara",
     "accesos": 2,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ42",
     "nombre": "Brisa Colunga y Johan Colunga",
     "accesos": 2,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ43",
     "nombre": "Gabriela Serrato",
     "accesos": 2,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ44",
     "nombre": "Hannae Martínez",
     "accesos": 2,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ45",
@@ -326,7 +326,7 @@
     "nombre": "Alfonso Ayala",
     "accesos": 2,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ48",
@@ -347,21 +347,21 @@
     "nombre": "Noemi Jiménez",
     "accesos": 2,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ51",
     "nombre": "Alfonso Olalde",
     "accesos": 2,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ52",
     "nombre": "Ilse Martínez",
     "accesos": 2,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ53",
@@ -375,14 +375,14 @@
     "nombre": "Laura Camacho",
     "accesos": 2,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ55",
     "nombre": "Denise Martínez",
     "accesos": 2,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ56",
@@ -396,19 +396,26 @@
     "nombre": "Mauricio Pérez",
     "accesos": 1,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
    {
     "codigo": "AJ58",
     "nombre": "Montserrat Perez",
     "accesos": 1,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ59",
     "nombre": "Siara Flores",
     "accesos": 2,
+    "mesa": "",
+    "confirmado": true
+  },
+  {
+    "codigo": "AJ60",
+    "nombre": "Renata",
+    "accesos": 1,
     "mesa": "",
     "confirmado": false
   }
