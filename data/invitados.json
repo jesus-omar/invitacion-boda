@@ -30,7 +30,7 @@
   {
     "codigo": "AJ05",
     "nombre": "Luis Moreno y Magali Subias",
-    "accesos": 4,
+    "accesos": 5,
     "mesa": "",
     "confirmado": true
   },
@@ -46,7 +46,7 @@
     "nombre": "Patricia y Jorge Moysen",
     "accesos": 2,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ08",
@@ -88,11 +88,11 @@
     "nombre": "Antonio y Areli",
     "accesos": 2,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ14",
-    "nombre": "Emilio y Antonia",
+    "nombre": "Emilio y Guadalupe",
     "accesos": 2,
     "mesa": "",
     "confirmado": false
@@ -109,7 +109,7 @@
     "nombre": "Jesús Chaires y Familia",
     "accesos": 3,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ17",
@@ -308,7 +308,7 @@
     "confirmado": true
   },
   {
-    "codigo": "AJ45",
+    "codigo": "AJ4578",
     "nombre": "Ashley Rodríguez",
     "accesos": 2,
     "mesa": "",
@@ -333,7 +333,7 @@
     "nombre": "Ania Vilchis",
     "accesos": 2,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ49",
@@ -416,6 +416,20 @@
     "codigo": "AJ60",
     "nombre": "Renata",
     "accesos": 1,
+    "mesa": "",
+    "confirmado": false
+  },
+   {
+    "codigo": "AJ61",
+    "nombre": "Anallely Vigueras",
+    "accesos": 1,
+    "mesa": "",
+    "confirmado": false
+  },
+   {
+    "codigo": "AJ62",
+    "nombre": "Arturo Zavaleta",
+    "accesos": 2,
     "mesa": "",
     "confirmado": false
   }
