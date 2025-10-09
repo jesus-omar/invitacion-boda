@@ -39,7 +39,7 @@
     "nombre": "Mario Cruz y Familia",
     "accesos": 6,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ07",
@@ -53,7 +53,7 @@
     "nombre": "Sandra Martínez",
     "accesos": 2,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ09",
@@ -81,7 +81,7 @@
     "nombre": "Christian y Sofía",
     "accesos": 3,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ13",
@@ -95,7 +95,7 @@
     "nombre": "Emilio y Guadalupe",
     "accesos": 2,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ15",
@@ -130,7 +130,7 @@
     "nombre": "Laura Flores",
     "accesos": 2,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ20",
@@ -424,14 +424,14 @@
     "nombre": "Anallely Vigueras",
     "accesos": 1,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
    {
     "codigo": "AJ62",
     "nombre": "Arturo Zavaleta",
     "accesos": 2,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   }
 
 ]
