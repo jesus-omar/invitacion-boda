@@ -200,7 +200,7 @@
     "nombre": "Juan Colunga",
     "accesos": 3,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ30",
