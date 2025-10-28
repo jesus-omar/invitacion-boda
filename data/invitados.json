@@ -193,7 +193,7 @@
     "nombre": "Alberto Colunga Reyes",
     "accesos": 2,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ29",
@@ -415,7 +415,7 @@
   {
     "codigo": "AJ60",
     "nombre": "Renata",
-    "accesos": 1,
+    "accesos": 2,
     "mesa": "",
     "confirmado": false
   },
