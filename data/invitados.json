@@ -432,6 +432,20 @@
     "accesos": 2,
     "mesa": "",
     "confirmado": true
+  },
+     {
+    "codigo": "AJ63",
+    "nombre": "Harenny Reyes",
+    "accesos": 1,
+    "mesa": "",
+    "confirmado": false
+  },
+     {
+    "codigo": "AJ64",
+    "nombre": "Lulú Garfias",
+    "accesos": 1,
+    "mesa": "",
+    "confirmado": false
   }
 
 ]
