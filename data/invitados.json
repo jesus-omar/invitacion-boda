@@ -137,7 +137,7 @@
     "nombre": "Jorge y Familia",
     "accesos": 4,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ21",
