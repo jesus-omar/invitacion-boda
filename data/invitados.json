@@ -23,7 +23,7 @@
   {
     "codigo": "AJ04",
     "nombre": "Carmen Moreno y Familia",
-    "accesos": 4,
+    "accesos": 2,
     "mesa": "",
     "confirmado": true
   },
@@ -60,7 +60,7 @@
     "nombre": "Kenia Lizbeth",
     "accesos": 2,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ10",
@@ -154,20 +154,6 @@
     "confirmado": true
   },
   {
-    "codigo": "AJ23",
-    "nombre": "Altagracia Chairez",
-    "accesos": 2,
-    "mesa": "",
-    "confirmado": false
-  },
-  {
-    "codigo": "AJ24",
-    "nombre": "Alberto Vargas y familia",
-    "accesos": 4,
-    "mesa": "",
-    "confirmado": false
-  },
-  {
     "codigo": "AJ25",
     "nombre": "Karen Vargas",
     "accesos": 1,
@@ -235,7 +221,7 @@
     "nombre": "Marytere Álvarez y Antonio Olvera",
     "accesos": 2,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ35",
@@ -306,13 +292,6 @@
     "accesos": 2,
     "mesa": "",
     "confirmado": true
-  },
-  {
-    "codigo": "AJ4578",
-    "nombre": "Ashley Rodríguez",
-    "accesos": 2,
-    "mesa": "",
-    "confirmado": false
   },
   {
     "codigo": "AJ46",
@@ -389,7 +368,7 @@
     "nombre": "Giovany López",
     "accesos": 2,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ57",
@@ -417,7 +396,7 @@
     "nombre": "Renata",
     "accesos": 2,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
    {
     "codigo": "AJ61",
@@ -438,7 +417,7 @@
     "nombre": "Harenny Reyes",
     "accesos": 1,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
      {
     "codigo": "AJ64",
