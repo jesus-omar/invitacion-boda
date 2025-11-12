@@ -303,9 +303,9 @@
   {
     "codigo": "AJ47",
     "nombre": "Alfonso Ayala",
-    "accesos": 2,
+    "accesos": -,
     "mesa": "",
-    "confirmado": true
+    "confirmado": false
   },
   {
     "codigo": "AJ48",
@@ -422,6 +422,13 @@
      {
     "codigo": "AJ64",
     "nombre": "Lulú Garfias",
+    "accesos": 1,
+    "mesa": "",
+    "confirmado": false
+  },
+   {
+    "codigo": "AJ65",
+    "nombre": "Marine Torres",
     "accesos": 1,
     "mesa": "",
     "confirmado": false
