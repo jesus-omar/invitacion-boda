@@ -432,6 +432,13 @@
     "accesos": 1,
     "mesa": "",
     "confirmado": false
+  },
+   {
+    "codigo": "AJ66",
+    "nombre": "Sergio Chaires",
+    "accesos": 2,
+    "mesa": "",
+    "confirmado": false
   }
 
 ]
