@@ -74,7 +74,7 @@
     "nombre": "Alejandra Moreno",
     "accesos": 4,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ12",
@@ -107,9 +107,9 @@
   {
     "codigo": "AJ16",
     "nombre": "Jesús Chaires y Familia",
-    "accesos": 3,
+    "accesos": "-",
     "mesa": "",
-    "confirmado": true
+    "confirmado": false
   },
   {
     "codigo": "AJ17",
@@ -123,7 +123,7 @@
     "nombre": "Arturo Carmona",
     "accesos": 3,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
   {
     "codigo": "AJ19",
@@ -219,7 +219,7 @@
   {
     "codigo": "AJ34",
     "nombre": "Marytere Álvarez y Antonio Olvera",
-    "accesos": 2,
+    "accesos": 3,
     "mesa": "",
     "confirmado": true
   },
@@ -268,7 +268,7 @@
   {
     "codigo": "AJ41",
     "nombre": "Nayeli Azuara",
-    "accesos": 2,
+    "accesos": 1,
     "mesa": "",
     "confirmado": true
   },
@@ -431,14 +431,14 @@
     "nombre": "Marine Torres",
     "accesos": 1,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   },
    {
     "codigo": "AJ66",
     "nombre": "Sergio Chaires",
     "accesos": 2,
     "mesa": "",
-    "confirmado": false
+    "confirmado": true
   }
 
 ]
