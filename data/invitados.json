@@ -13,13 +13,7 @@
     "mesa": "",
     "confirmado": true
   },
-  {
-    "codigo": "AJ03",
-    "nombre": "Antonio Sánchez y Gloria Flores",
-    "accesos": 2,
-    "mesa": "",
-    "confirmado": false
-  },
+ 
   {
     "codigo": "AJ04",
     "nombre": "Carmen Moreno y Familia",
@@ -79,7 +73,7 @@
   {
     "codigo": "AJ12",
     "nombre": "Christian y Sofía",
-    "accesos": 3,
+    "accesos": 4,
     "mesa": "",
     "confirmado": true
   },
@@ -104,13 +98,7 @@
     "mesa": "",
     "confirmado": false
   },
-  {
-    "codigo": "AJ16",
-    "nombre": "Jesús Chaires y Familia",
-    "accesos": "-",
-    "mesa": "",
-    "confirmado": false
-  },
+
   {
     "codigo": "AJ17",
     "nombre": "David Chaires y Margarita Ibarra",
@@ -142,7 +130,7 @@
   {
     "codigo": "AJ21",
     "nombre": "Gabriela del Valle",
-    "accesos": 2,
+    "accesos": 1,
     "mesa": "",
     "confirmado": true
   },
@@ -156,7 +144,7 @@
   {
     "codigo": "AJ25",
     "nombre": "Karen Vargas",
-    "accesos": 1,
+    "accesos": "1",
     "mesa": "",
     "confirmado": false
   },
@@ -324,7 +312,7 @@
   {
     "codigo": "AJ50",
     "nombre": "Noemi Jiménez",
-    "accesos": 2,
+    "accesos": 3,
     "mesa": "",
     "confirmado": true
   },
